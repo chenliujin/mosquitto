@@ -5,7 +5,6 @@
 
 # 官网
 - http://mqtt.org/
-- http://mosquitto.org/
 
 
 # 客户端
@@ -18,4 +17,5 @@
 
 
 # 参考文献
+- [官网](http://mosquitto.org/)
 - https://github.com/mcxiaoke/mqtt
