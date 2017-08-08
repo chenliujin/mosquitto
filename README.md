@@ -29,4 +29,5 @@ WITH_WEBSOCKETS=yes
 
 # 参考文献
 - [官网](http://mosquitto.org/)
+- [GitHub](https://github.com/eclipse/mosquitto)
 - https://github.com/mcxiaoke/mqtt
