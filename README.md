@@ -1,4 +1,15 @@
 
+# User/Password
+
+# TLS
+
+
+# 开启 websocket
+WITH_WEBSOCKETS=yes
+
+
+
+
 # Docker
 - [jllopis/mosquitto:v1.4.12](https://hub.docker.com/r/jllopis/mosquitto/~/dockerfile/)
 
