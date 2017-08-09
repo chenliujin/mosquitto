@@ -31,3 +31,7 @@ WITH_WEBSOCKETS=yes
 - [官网](http://mosquitto.org/)
 - [GitHub](https://github.com/eclipse/mosquitto)
 - https://github.com/mcxiaoke/mqtt
+
+
+## 编译
+- http://blog.csdn.net/houjixin/article/details/46711547
