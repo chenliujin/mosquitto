@@ -30,7 +30,7 @@ COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitt
 
 RUN systemctl enable mosquitto;
 
-
+CMD ["/usr/sbin/init"]
 
 #RUN exit;
 #
