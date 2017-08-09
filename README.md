@@ -6,6 +6,8 @@
 listener 8883
 ```
 
+
+
 ---
 
 # 数据持久化
@@ -80,6 +82,7 @@ password_file 	mosquitto.passwd
 # 参考文献
 - [官网](http://mosquitto.org/)
 - [GitHub](https://github.com/eclipse/mosquitto)
+- [TLS](https://mosquitto.org/man/mosquitto-tls-7.html)
 - https://github.com/mcxiaoke/mqtt
 - [如何在CentOS 7上安装和保护Mosquitto MQTT消息传递代理](https://www.howtoing.com/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-centos-7/)
 
