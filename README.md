@@ -14,9 +14,8 @@ listener 8883
 ```
 persistence true
 persistence_file mosquitto.db
-persistence_location /var/mosquitto/
+persistence_location /var/lib/mosquitto/
 persisitent_client_expiration 1d
-
 ```
 
 ---
@@ -28,7 +27,7 @@ make WITH_WEBSOCKETS=yes
 
 ## conf
 ```
-listener 8083 
+listener 9001 
 protocol websockets
 ```
 
@@ -81,8 +80,10 @@ password_file 	mosquitto.passwd
 - [官网](http://mosquitto.org/)
 - [GitHub](https://github.com/eclipse/mosquitto)
 - https://github.com/mcxiaoke/mqtt
+- [如何在CentOS 7上安装和保护Mosquitto MQTT消息传递代理](https://www.howtoing.com/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-centos-7/)
 
 
-## 编译时遇到的问题参考：
+## 编译安装
+- http://garagetech.tips/install-mosquitto-websockets-centos/
 - http://blog.csdn.net/houjixin/article/details/46711547
 - http://blog.csdn.net/qhdcsj/article/details/45042515
