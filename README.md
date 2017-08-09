@@ -1,7 +1,27 @@
 
+---
 
 # TLS
 
+```
+# Certificate Authority 
+openssl req -new -x509 -days <duration> -extensions v3_ca -keyout ca.key -out ca.crt
+
+# Server
+## Generate a server key without encryption.
+openssl genrsa -out server.key 2048
+
+## Generate a certificate signing request to send to the CA.
+openssl req -out server.csr -key server.key -new
+
+## Send the CSR to the CA, or sign it with your CA key:
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days <duration>
+
+# Client
+mosquitto_pub -h mqtt.66park.net -p 1883 -t chen --cafile ./ca.crt -m "test" -u admin -P "1q2w3e"
+```
+
+## conf
 ```
 listener 8883
 ```
