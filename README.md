@@ -108,6 +108,7 @@ password_file 	mosquitto.passwd
 - [TLS](https://mosquitto.org/man/mosquitto-tls-7.html)
 - https://github.com/mcxiaoke/mqtt
 - [如何在CentOS 7上安装和保护Mosquitto MQTT消息传递代理](https://www.howtoing.com/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-centos-7/)
+- http://www.steves-internet-guide.com/mosquitto-tls/
 
 
 ## 编译安装
