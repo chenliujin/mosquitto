@@ -2,6 +2,23 @@
 
 # TLS
 
+```
+listener 8883
+```
+
+---
+
+# 数据持久化
+
+## conf
+```
+persistence true
+persistence_file mosquitto.db
+persistence_location /var/mosquitto/
+persisitent_client_expiration 1d
+
+```
+
 ---
 
 # 开启 websocket
@@ -11,7 +28,7 @@ make WITH_WEBSOCKETS=yes
 
 ## conf
 ```
-listener 9883
+listener 8083 
 protocol websockets
 ```
 
@@ -21,13 +38,13 @@ protocol websockets
 
 ## 生成密码
 ```
-$ mosquitto_passwd -c mosquitto.pwd {USERNAME}
+$ mosquitto_passwd -c /etc/mosquitto/mosquitto.passwd {username}
 ```
 
 ## conf
 ```
 allow_anonymous false
-password_file 	mosquitto.pwd
+password_file 	mosquitto.passwd
 ```
 
 ---
@@ -36,6 +53,11 @@ password_file 	mosquitto.pwd
 /etc/mosquitto/
 
 
+---
+
+# 集群
+
+---
 
 
 # Docker
