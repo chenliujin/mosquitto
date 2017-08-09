@@ -24,6 +24,9 @@ mosquitto_pub -h mqtt.66park.net -p 1883 -t chen --cafile ./ca.crt -m "test" -u 
 ## conf
 ```
 listener 8883
+cafile 		/etc/mosquitto/ssl/ca.crt
+certfile 	/etc/mosquitto/ssl/server.crt
+keyfile 	/etc/mosquitto/ssl/server.key
 ```
 
 
