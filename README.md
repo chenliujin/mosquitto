@@ -8,6 +8,10 @@
 WITH_WEBSOCKETS=yes
 
 
+# 目录结构
+/etc/mosquitto/
+
+
 
 
 # Docker
@@ -33,5 +37,6 @@ WITH_WEBSOCKETS=yes
 - https://github.com/mcxiaoke/mqtt
 
 
-## 编译
+## 编译时遇到的问题参考：
 - http://blog.csdn.net/houjixin/article/details/46711547
+- http://blog.csdn.net/qhdcsj/article/details/45042515
