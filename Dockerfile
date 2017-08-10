@@ -1,8 +1,11 @@
 FROM centos:latest
 
 MAINTAINER chenliujin <liujin.chen@qq.com>
+
+# 1.修改时区
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
  
-EXPOSE 1883 9001 8883
+EXPOSE 1883 8883 9001 9002
 
 VOLUME ["/var/lib/mosquitto", "/etc/mosquitto"]
 
@@ -10,9 +13,8 @@ RUN adduser mosquitto
 
 ENV MOSQUITTO_VERSION=v1.4.14
 
-RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-devel libuuid-devel libxslt docbook-style-xsl'; \
+RUN buildDeps='epel-release git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-devel libuuid-devel libxslt docbook-style-xsl'; \
     yum update -y && \
-    yum install -y epel-release && \
     yum install -y $buildDeps libwebsockets libuuid c-ares openssl && \
     git clone https://github.com/eclipse/mosquitto.git && \
     cd mosquitto && \
@@ -24,11 +26,10 @@ RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-dev
     yum erase -y $buildDeps && \
     yum clean all; 
 
-COPY /etc/mosquitto/mosquitto.conf 		/etc/mosquitto/mosquitto.conf
-COPY /etc/mosquitto/mosquitto.passwd 		/etc/mosquitto/mosquitto.passwd
+COPY /etc/mosquitto				/etc/mosquitto
 COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitto.service
 
-RUN systemctl enable mosquitto;
+RUN systemctl enable mosquitto
 
 CMD ["/usr/sbin/init"]
 
