@@ -10,6 +10,19 @@ yum install -y mosquitto mosquitto-clients
 
 # TLS
 
+## 第三方签名证书
+
+```
+listener 8883
+#cafile 	// 第三方签名，浏览器可以识别，此处不用填
+certfile 	/etc/mosquitto/ssl/mqtt.chenliujin.com.crt
+keyfile 	/etc/mosquitto/ssl/mqtt.chenliujin.com.key
+
+```
+
+
+## 自签名证书
+
 ```
 # Certificate Authority 
 openssl req -new -x509 -days <duration> -extensions v3_ca -keyout ca.key -out ca.crt
