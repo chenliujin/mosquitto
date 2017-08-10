@@ -1,3 +1,8 @@
+# Yum
+
+```
+curl http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7/home:oojah:mqtt.repo > /etc/yum.repos.d/mosquitto.repo
+```
 
 ---
 
