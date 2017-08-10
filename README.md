@@ -103,6 +103,9 @@ password_file 	mosquitto.passwd
 
 ---
 
+# Go
+- https://eclipse.org/paho/clients/golang/
+
 # Node
 - https://www.npmjs.com/package/mqtt
 
@@ -137,6 +140,7 @@ password_file 	mosquitto.passwd
 - https://github.com/mcxiaoke/mqtt
 - [如何在CentOS 7上安装和保护Mosquitto MQTT消息传递代理](https://www.howtoing.com/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-centos-7/)
 - http://www.steves-internet-guide.com/mosquitto-tls/
+- http://goochgooch.co.uk/2014/08/01/building-mosquitto-1-4/
 
 
 ## 编译安装
