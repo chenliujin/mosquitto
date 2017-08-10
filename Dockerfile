@@ -13,8 +13,9 @@ RUN adduser mosquitto
 
 ENV MOSQUITTO_VERSION=v1.4.14
 
-RUN buildDeps='epel-release git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-devel libuuid-devel libxslt docbook-style-xsl'; \
+RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-devel libuuid-devel libxslt docbook-style-xsl'; \
     yum update -y && \
+    yum install -y epel-release && \
     yum install -y $buildDeps libwebsockets libuuid c-ares openssl && \
     git clone https://github.com/eclipse/mosquitto.git && \
     cd mosquitto && \
@@ -23,10 +24,11 @@ RUN buildDeps='epel-release git make gcc gcc-c++ openssl-devel c-ares-devel libw
     make WITH_WEBSOCKETS=yes && \
     make install && \
     cd / && rm -rf mosquitto && \
-    yum erase -y $buildDeps && \
+    yum erase -y epel-release $buildDeps && \
     yum clean all; 
 
 COPY /etc/mosquitto				/etc/mosquitto
+#COPY /etc/mosquitto/ssl				/etc/mosquitto/ssl
 COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitto.service
 
 RUN systemctl enable mosquitto
