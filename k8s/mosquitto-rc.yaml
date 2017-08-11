@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mosquitto-v0
+  labels:
+    app: mosquitto
+    version: v0
+spec:
+  replicas: 1
+  selector:
+    app: mosquitto
+    version: v0
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+        version: v0
+    spec:
+      containers:
+      - name: mosquitto
+        image: docker.io:5000/mosquitto:1.4.14
+        imagePullPolicy: Always
+        #resources:
+        #  limits:
+        #    cpu: 0.5
+        #    memory: 500Mi
+        #volumeMounts:
+        #- name: mosquitto
+        #  mountPath: /etc/mosquitto
+        ports:
+        - name: mqtt
+          containerPort: 1883
+        - name: mqtt-tls
+          containerPort: 8883
+        - name: websockets
+          containerPort: 9001
+        - name: websockets-tls
+          containerPort: 9002
+        livenessProbe:
+          tcpSocket:
+            port: 1883
+          initialDelaySeconds: 10
+          periodSeconds: 2
+          failureThreshold: 1
+      imagePullSecrets:
+        - name: docker.io 
+      #volumes:
+      #- name: mosquitto
+      #  persistentVolumeClaim:
+      #    claimName: mosquitto
