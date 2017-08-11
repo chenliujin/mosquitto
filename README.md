@@ -22,6 +22,7 @@ keyfile 	/etc/mosquitto/ssl/mqtt.chenliujin.com.key
 
 
 ## 自签名证书
+- https://github.com/owntracks/tools/blob/master/TLS/generate-CA.sh
 
 ```
 # Certificate Authority 
