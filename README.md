@@ -144,6 +144,7 @@ password_file 	mosquitto.passwd
 - http://www.steves-internet-guide.com/mosquitto-tls/
 - http://goochgooch.co.uk/2014/08/01/building-mosquitto-1-4/
 - http://jpmens.net/2014/07/03/the-mosquitto-mqtt-broker-gets-websockets-support/
+- https://gist.github.com/vigevenoj/a911eef4a6cbaa306247
 
 
 ## 编译安装
