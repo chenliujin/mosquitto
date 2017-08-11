@@ -137,6 +137,7 @@ password_file 	mosquitto.passwd
 
 # 参考文献
 - [官网](http://mosquitto.org/)
+- [官方源码](https://mosquitto.org/files/source/)
 - [GitHub](https://github.com/eclipse/mosquitto)
 - [TLS](https://mosquitto.org/man/mosquitto-tls-7.html)
 - https://github.com/mcxiaoke/mqtt
