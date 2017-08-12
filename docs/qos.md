@@ -2,6 +2,6 @@
 
 Higher levels of QoS are more reliable, but involve higher latency and have higher bandwidth requirements.
 
-- 0: The broker/client will deliver the message once, with no confirmation.
-- 1: The broker/client will deliver the message at least once, with confirmation required.
-- 2: The broker/client will deliver the message exactly once by using a four step handshake.
+- 0: The broker/client will deliver the message once, with no confirmation.(at most once)
+- 1: The broker/client will deliver the message at least once, with confirmation required.(at least once)
+- 2: The broker/client will deliver the message exactly once by using a four step handshake.(exactly once)
