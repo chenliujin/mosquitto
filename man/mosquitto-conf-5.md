@@ -137,7 +137,7 @@
 	then another means of connection should be created to
 	control authenticated client access.  </p>
 
-	默认值：<i>true</i>
+	默认值：@true@
 
 	Reloaded on reload signal.
 </dd>
