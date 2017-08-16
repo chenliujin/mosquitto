@@ -484,11 +484,7 @@ Reloaded on reload signal.
 
 <dt><span class="term"><code class="option">retry_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
 <dd>
-Time in seconds to wait before resending an outgoing QoS=1 or QoS=2 message.
-
-The integer number of seconds after a QoS=1 or QoS=2
-message has been sent that mosquitto will wait before
-retrying when no response is received.
+mosquitto 在发送 QoS=1 或 QoS=2 的消息后等待多长时间没有收到确认，将重新发送此消息。
 
 如果未设置，默认为20秒。
 
