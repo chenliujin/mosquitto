@@ -137,9 +137,9 @@
 	then another means of connection should be created to
 	control authenticated client access.  </p>
 
-	默认值：`true`
+默认值：`true`
 
-	Reloaded on reload signal.
+Reloaded on reload signal.
 </dd>
 
 <dt><span class="term"><code class="option">allow_duplicate_messages</code> [ true | false ]</span></dt>
