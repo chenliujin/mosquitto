@@ -131,11 +131,11 @@
 
 <dt><span class="term"><code class="option">allow_anonymous</code> [ true | false ]</span></dt>
 <dd>
-	<p>Boolean value that determines whether clients that
-	connect without providing a username are allowed to
-	connect. If set to <em class="replaceable"><code>false</code></em>
-	then another means of connection should be created to
-	control authenticated client access.  </p>
+Boolean value that determines whether clients that
+connect without providing a username are allowed to
+connect. If set to <em><code>false</code></em>
+then another means of connection should be created to
+control authenticated client access.
 
 默认值：*`true`*
 
@@ -406,29 +406,34 @@ Reloaded on reload signal.
 						then the current directory is used.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
+
 <dt><span class="term"><code class="option">persistent_client_expiration</code> <em class="replaceable"><code>duration</code></em></span></dt>
 <dd>
-<p>This option allows persistent clients (those with
-						clean session set to false) to be removed if they do
-						not reconnect within a certain time frame. This is a
-						non-standard option. As far as the MQTT spec is
-						concerned, persistent clients persist forever.</p>
-<p>Badly designed clients may set clean session to false
-						whilst using a randomly generated client id. This leads
-						to persistent clients that will never reconnect. This
-						option allows these clients to be removed.</p>
-<p>The expiration period should be an integer followed
-						by one of h d w m y for hour, day, week, month and year
-						respectively. For example:</p>
-<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; ">
-<li class="listitem" style="list-style-type: circle"><p>persistent_client_expiration 2m</p></li>
-<li class="listitem" style="list-style-type: circle"><p>persistent_client_expiration 14d</p></li>
-<li class="listitem" style="list-style-type: circle"><p>persistent_client_expiration 1y</p></li>
-</ul></div>
-<p>As this is a non-standard option, the default if not
-						set is to never expire persistent clients.</p>
-<p>Reloaded on reload signal.</p>
+This option allows persistent clients (those with
+clean session set to false) to be removed if they do
+not reconnect within a certain time frame. This is a
+non-standard option. As far as the MQTT spec is
+concerned, persistent clients persist forever.
+
+Badly designed clients may set clean session to false
+whilst using a randomly generated client id. This leads
+to persistent clients that will never reconnect. This
+option allows these clients to be removed.
+
+The expiration period should be an integer followed
+by one of h d w m y for hour, day, week, month and year
+respectively. For example:
+
+- persistent_client_expiration 2m
+- persistent_client_expiration 14d
+- persistent_client_expiration 1y
+
+As this is a non-standard option, the default if not
+set is to never expire persistent clients.
+
+Reloaded on reload signal.
 </dd>
+
 <dt><span class="term"><code class="option">pid_file</code> <em class="replaceable"><code>file path</code></em></span></dt>
 <dd>
 <p>Write a pid file to the file specified. If not given
