@@ -17,11 +17,11 @@
 </div>
 <div class="refsect1">
 <a name="idm45942561622528"></a><h2>Description</h2>
-<p><span class="command"><strong>mosquitto.conf</strong></span> is the configuration file for
+<p><strong>mosquitto.conf</strong> is the configuration file for
 		mosquitto. This file can reside anywhere as long as mosquitto can read
 		it. By default, mosquitto does not need a configuration file and will
 		use the default values listed below. See
-		<span class="citerefentry"><span class="refentrytitle">mosquitto</span>(8)</span>
+		mosquitto(8)
 		for information on how to load a configuration file.</p>
 </div>
 <div class="refsect1">
@@ -81,7 +81,7 @@
 <div class="refsect1">
 <a name="idm45942561611920"></a><h2>General Options</h2>
 <div class="variablelist"><dl class="variablelist">
-<dt><span class="term"><code class="option">acl_file</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>acl_file</code> <em><code>file path</code></em></dt>
 <dd>
 <p>Set the path to an access control list file. If
 						defined, the contents of the file are used to control
@@ -97,12 +97,12 @@
 						contain the + or # wildcards as in
 						subscriptions.</p>
 <p>The first set of topics are applied to anonymous
-						clients, assuming <code class="option">allow_anonymous</code> is
+						clients, assuming <code>allow_anonymous</code> is
 						true. User specific topic ACLs are added after a user
 						line as follows:</p>
 <p><code class="code">user &lt;username&gt;</code></p>
 <p>The username referred to here is the same as in
-						<code class="option">password_fil</code>e. It is not the
+						<code>password_fil</code>e. It is not the
 						clientid.</p>
 <p>It is also possible to define ACLs based on pattern
 						substitution within the topic. The form is the same as
@@ -129,7 +129,7 @@
 						be affected after the reload.</p>
 </dd>
 
-<dt><span class="term"><code class="option">allow_anonymous</code> [ true | false ]</span></dt>
+<dt><code>allow_anonymous</code> [ true | false ]</dt>
 <dd>
 Boolean value that determines whether clients that
 connect without providing a username are allowed to
@@ -142,7 +142,7 @@ control authenticated client access.
 Reloaded on reload signal.
 </dd>
 
-<dt><span class="term"><code class="option">allow_duplicate_messages</code> [ true | false ]</span></dt>
+<dt><code>allow_duplicate_messages</code> [ true | false ]</dt>
 <dd>
 <p>If a client is subscribed to multiple subscriptions
 						that overlap, e.g. foo/# and foo/+/baz , then MQTT
@@ -157,18 +157,18 @@ Reloaded on reload signal.
 						subscribed to the same set of topics and want to
 						minimise memory usage.</p>
 <p>It can be safely set to
-						<em class="replaceable"><code>true</code></em> if you know in advance
+						<em><code>true</code></em> if you know in advance
 						that your clients will never have overlapping
 						subscriptions, otherwise your clients must be able to
 						correctly deal with duplicate messages even when then
 						have QoS=2.</p>
-<p>Defaults to <em class="replaceable"><code>true</code></em>.</p>
+<p>Defaults to <em><code>true</code></em>.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">auth_opt_*</code> <em class="replaceable"><code>value</code></em></span></dt>
+<dt><code>auth_opt_*</code> <em><code>value</code></em></dt>
 <dd><p>Options to be passed to the auth plugin. See the
 						specific plugin instructions.  </p></dd>
-<dt><span class="term"><code class="option">auth_plugin</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>auth_plugin</code> <em><code>file path</code></em></dt>
 <dd>
 <p>Specify an external module to use for authentication
 						and access control. This allows custom
@@ -176,9 +176,9 @@ Reloaded on reload signal.
 						created.</p>
 <p>Not currently reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">auth_plugin_deny_special_chars</code> [ true | false ]</span></dt>
+<dt><code>auth_plugin_deny_special_chars</code> [ true | false ]</dt>
 <dd>
-<p>If <em class="replaceable"><code>true</code></em> then before an ACL
+<p>If <em><code>true</code></em> then before an ACL
 						check is made, the username/client id of the client
 						needing the check is searched for the presence of
 						either a '+' or '#' character. If either of these
@@ -195,11 +195,11 @@ Reloaded on reload signal.
 						never use usernames or client ids in topics) then you
 						can disable this extra check and hence have all ACL
 						checks delivered to your plugin by setting this option
-						to <em class="replaceable"><code>false</code></em>.</p>
-<p>Defaults to <em class="replaceable"><code>true</code></em>.</p>
+						to <em><code>false</code></em>.</p>
+<p>Defaults to <em><code>true</code></em>.</p>
 <p>Not currently reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">autosave_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
+<dt><code>autosave_interval</code> <em><code>seconds</code></em></dt>
 <dd>
 <p>The number of seconds that mosquitto will wait
 						between each time it saves the in-memory database to
@@ -210,20 +210,20 @@ Reloaded on reload signal.
 						seconds (30 minutes).</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">autosave_on_changes</code> [ true | false ]</span></dt>
+<dt><code>autosave_on_changes</code> [ true | false ]</dt>
 <dd>
-<p>If <em class="replaceable"><code>true</code></em>, mosquitto will
+<p>If <em><code>true</code></em>, mosquitto will
 						count the number of subscription changes, retained
 						messages received and queued messages and if the total
-						exceeds <code class="option">autosave_interval</code> then the
+						exceeds <code>autosave_interval</code> then the
 						in-memory database will be saved to disk. If
-						<em class="replaceable"><code>false</code></em>, mosquitto will save
+						<em><code>false</code></em>, mosquitto will save
 						the in-memory database to disk by treating
-						<code class="option">autosave_interval</code> as a time in
+						<code>autosave_interval</code> as a time in
 						seconds.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">clientid_prefixes</code> <em class="replaceable"><code>prefix</code></em></span></dt>
+<dt><code>clientid_prefixes</code> <em><code>prefix</code></em></dt>
 <dd>
 <p>If defined, only clients that have a clientid with a
 						prefix that matches clientid_prefixes will be allowed
@@ -235,15 +235,15 @@ Reloaded on reload signal.
 						connected clients will be unaffected by any
 						changes.</p>
 </dd>
-<dt><span class="term"><code class="option">connection_messages</code> [ true | false ]</span></dt>
+<dt><code>connection_messages</code> [ true | false ]</dt>
 <dd>
-<p>If set to <em class="replaceable"><code>true</code></em>, the log
+<p>If set to <em><code>true</code></em>, the log
 						will include entries when clients connect and
-						disconnect. If set to <em class="replaceable"><code>false</code></em>,
+						disconnect. If set to <em><code>false</code></em>,
 						these entries will not appear.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">include_dir</code> <em class="replaceable"><code>dir</code></em></span></dt>
+<dt><code>include_dir</code> <em><code>dir</code></em></dt>
 <dd><p>External configuration files may be included by using
 						the include_dir option. This defines a directory that
 						will be searched for config files. All files that end
@@ -252,16 +252,16 @@ Reloaded on reload signal.
 						file. This option will only be processed from the main
 						configuration file. The directory specified must not
 						contain the main configuration file.</p></dd>
-<dt><span class="term"><code class="option">log_dest</code> <em class="replaceable"><code>destinations</code></em></span></dt>
+<dt><code>log_dest</code> <em><code>destinations</code></em></dt>
 <dd>
 <p>Send log messages to a particular destination.
-						Possible destinations are: <code class="option">stdout</code>
-						<code class="option">stderr</code> <code class="option">syslog</code>
-						<code class="option">topic</code>.</p>
-<p><code class="option">stdout</code> and
-						<code class="option">stderr</code> log to the console on the
+						Possible destinations are: <code>stdout</code>
+						<code>stderr</code> <code>syslog</code>
+						<code>topic</code>.</p>
+<p><code>stdout</code> and
+						<code>stderr</code> log to the console on the
 						named output.</p>
-<p><code class="option">syslog</code> uses the userspace syslog
+<p><code>syslog</code> uses the userspace syslog
 						facility which usually ends up in /var/log/messages or
 						similar and topic logs to the broker topic
 						'$SYS/broker/log/&lt;severity&gt;', where severity is
@@ -271,7 +271,7 @@ Reloaded on reload signal.
 						log_type options and publishes log messages at
 						$SYS/broker/log/M/subscribe and
 						$SYS/broker/log/M/unsubscribe.</p>
-<p>The <code class="option">file</code> destination requires an
+<p>The <code>file</code> destination requires an
 						additional parameter which is the file to be logged to,
 						e.g. "log_dest file /var/log/mosquitto.log". The file
 						will be closed and reopened when the broker receives a
@@ -285,88 +285,94 @@ Reloaded on reload signal.
 						stdout nor stderr logging is available.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">log_facility</code> <em class="replaceable"><code>local facility</code></em></span></dt>
+<dt><code>log_facility</code> <em><code>local facility</code></em></dt>
 <dd><p>If using syslog logging (not on Windows), messages
 						will be logged to the "daemon" facility by default. Use
-						the <code class="option">log_facility</code> option to choose
+						the <code>log_facility</code> option to choose
 						which of local0 to local7 to log to instead. The option
 						value should be an integer value, e.g. "log_facility 5"
 						to use local5.</p></dd>
-<dt><span class="term"><code class="option">log_timestamp</code> [ true | false ]</span></dt>
+<dt><code>log_timestamp</code> [ true | false ]</dt>
 <dd>
 <p>Boolean value, if set to
-						<em class="replaceable"><code>true</code></em> a timestamp value will
+						<em><code>true</code></em> a timestamp value will
 						be added to each log entry. The default is
-						<em class="replaceable"><code>true</code></em>.</p>
+						<em><code>true</code></em>.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">log_type</code> <em class="replaceable"><code>types</code></em></span></dt>
+<dt><code>log_type</code> <em><code>types</code></em></dt>
 <dd>
 <p>Choose types of messages to log. Possible types are:
-						<em class="replaceable"><code>debug</code></em>,
-						<em class="replaceable"><code>error</code></em>,
-						<em class="replaceable"><code>warning</code></em>,
-						<em class="replaceable"><code>notice</code></em>,
-						<em class="replaceable"><code>information</code></em>,
-						<em class="replaceable"><code>subscribe</code></em>,
-						<em class="replaceable"><code>unsubscribe</code></em>,
-						<em class="replaceable"><code>websockets</code></em>,
-						<em class="replaceable"><code>none</code></em>,
-						<em class="replaceable"><code>all</code></em>.</p>
-<p>Defaults to <em class="replaceable"><code>error</code></em>,
-						<em class="replaceable"><code>warning</code></em>, <em class="replaceable"><code>notice
+						<em><code>debug</code></em>,
+						<em><code>error</code></em>,
+						<em><code>warning</code></em>,
+						<em><code>notice</code></em>,
+						<em><code>information</code></em>,
+						<em><code>subscribe</code></em>,
+						<em><code>unsubscribe</code></em>,
+						<em><code>websockets</code></em>,
+						<em><code>none</code></em>,
+						<em><code>all</code></em>.</p>
+<p>Defaults to <em><code>error</code></em>,
+						<em><code>warning</code></em>, <em><code>notice
 						</code></em>and
-						<em class="replaceable"><code>information</code></em>.  This option
+						<em><code>information</code></em>.  This option
 						may be specified multiple times. Note that the
-						<em class="replaceable"><code>debug </code></em>type (used for
+						<em><code>debug </code></em>type (used for
 						decoding incoming/outgoing network packets) is never
 						logged in topics.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">max_inflight_messages</code> <em class="replaceable"><code>count</code></em></span></dt>
+
+<dt><code>max_inflight_messages</code> <em><code>count</code></em></dt>
 <dd>
-<p>The maximum number of QoS 1 or 2 messages that can be
-						in the process of being transmitted simultaneously.
-						This includes messages currently going through
-						handshakes and messages that are being retried.
-						Defaults to 20. Set to 0 for no maximum. If set to 1,
-						this will guarantee in-order delivery of
-						messages.</p>
-<p>Reloaded on reload signal.</p>
+
+每个客户端可以同时传输的 QoS 1 或 2 消息的最大数量。
+包含正在握手或已握手的消息和正在重试的消息。
+
+默认值：20
+
+Set to 0 for no maximum. If set to 1, this will guarantee in-order delivery of QoS 1 and 2 messages.
+
+Reloaded on reload signal.
+
 </dd>
-<dt><span class="term"><code class="option">max_queued_messages</code> <em class="replaceable"><code>count</code></em></span></dt>
+
+<dt><code>max_queued_messages</code> <em><code>count</code></em></dt>
 <dd>
 <p>The maximum number of QoS 1 or 2 messages to hold in
 						the queue above those messages that are currently in
 						flight. Defaults to 100. Set to 0 for no maximum (not
 						recommended). See also the
-						<code class="option">queue_qos0_messages</code> option.</p>
+						<code>queue_qos0_messages</code> option.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">message_size_limit</code> <em class="replaceable"><code>limit</code></em></span></dt>
+
+
+<dt><code>message_size_limit</code> <em><code>limit</code></em></dt>
 <dd><p>This option sets the maximum publish payload size
 						that the broker will allow. Received messages that
 						exceed this size will not be accepted by the broker.
 						The default value is 0, which means that all valid MQTT
 						messages are accepted. MQTT imposes a maximum payload
 						size of 268435455 bytes.</p></dd>
-<dt><span class="term"><code class="option">password_file</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>password_file</code> <em><code>file path</code></em></dt>
 <dd>
 <p>Set the path to a password file. If defined, the
 						contents of the file are used to control client access
 						to the broker. The file can be created using the
-						<span class="citerefentry"><span class="refentrytitle">mosquitto_passwd</span>(1)</span>
+						mosquitto_passwd(1)
 						utility. If mosquitto is compiled without TLS support
 						(it is recommended that TLS support is included), then
 						the password file should be a text file with each line
 						in the format "username:password", where the colon and
 						password are optional but recommended. If
-						<code class="option">allow_anonymous</code> is set to
-						<em class="replaceable"><code>false</code></em>, only users defined in
+						<code>allow_anonymous</code> is set to
+						<em><code>false</code></em>, only users defined in
 						this file will be able to connect. Setting
-						<code class="option">allow_anonymous</code> to
-						<em class="replaceable"><code>true</code></em> when
-						<em class="replaceable"><code>password_file</code></em>is defined is
+						<code>allow_anonymous</code> to
+						<em><code>true</code></em> when
+						<em><code>password_file</code></em>is defined is
 						valid and could be used with acl_file to have e.g. read
 						only guest/anonymous accounts and defined users that
 						can publish.</p>
@@ -375,11 +381,11 @@ Reloaded on reload signal.
 						Clients that are already connected will not be
 						affected.</p>
 <p>See also
-						<span class="citerefentry"><span class="refentrytitle">mosquitto_passwd</span>(1)</span>.</p>
+						mosquitto_passwd(1).</p>
 </dd>
-<dt><span class="term"><code class="option">persistence</code> [ true | false ]</span></dt>
+<dt><code>persistence</code> [ true | false ]</dt>
 <dd>
-<p>If <em class="replaceable"><code>true</code></em>, connection,
+<p>If <em><code>true</code></em>, connection,
 						subscription and message data will be written to the
 						disk in mosquitto.db at the location dictated by
 						persistence_location. When mosquitto is restarted, it
@@ -388,13 +394,13 @@ Reloaded on reload signal.
 						also at periodic intervals as defined by
 						autosave_interval. Writing of the persistence database
 						may also be forced by sending mosquitto the SIGUSR1
-						signal. If <em class="replaceable"><code>false</code></em>, the data
+						signal. If <em><code>false</code></em>, the data
 						will be stored in memory only. Defaults to
-						<em class="replaceable"><code>false</code></em>.</p>
+						<em><code>false</code></em>.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
 
-<dt><span class="term"><code class="option">persistence_file</code> <em class="replaceable"><code>file name</code></em></span></dt>
+<dt><code>persistence_file</code> <em><code>file name</code></em></dt>
 <dd>
 The filename to use for the persistent database.
 Defaults to mosquitto.db.
@@ -402,7 +408,7 @@ Defaults to mosquitto.db.
 Reloaded on reload signal.
 </dd>
 
-<dt><span class="term"><code class="option">persistence_location</code> <em class="replaceable"><code>path</code></em></span></dt>
+<dt><code>persistence_location</code> <em><code>path</code></em></dt>
 <dd>
 The path where the persistence database should be
 stored. Must end in a trailing slash. If not given,
@@ -411,7 +417,7 @@ then the current directory is used.
 Reloaded on reload signal.
 </dd>
 
-<dt><span class="term"><code class="option">persistent_client_expiration</code> <em class="replaceable"><code>duration</code></em></span></dt>
+<dt><code>persistent_client_expiration</code> <em><code>duration</code></em></dt>
 <dd>
 This option allows persistent clients (those with
 clean session set to false) to be removed if they do
@@ -434,7 +440,7 @@ This is a non-standard option in MQTT V3.1 but allowed in MQTT v3.1.1.
 Reloaded on reload signal.
 </dd>
 
-<dt><span class="term"><code class="option">pid_file</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>pid_file</code> <em><code>file path</code></em></dt>
 <dd>
 <p>Write a pid file to the file specified. If not given
 						(the default), no pid file will be written. If the pid
@@ -447,7 +453,7 @@ Reloaded on reload signal.
 						/var/run/mosquitto.pid</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">psk_file</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>psk_file</code> <em><code>file path</code></em></dt>
 <dd>
 <p>Set the path to a pre-shared-key file. This option
 						requires a listener to be have PSK support enabled. If
@@ -463,21 +469,21 @@ Reloaded on reload signal.
 						Clients that are already connected will not be
 						affected.</p>
 </dd>
-<dt><span class="term"><code class="option">queue_qos0_messages</code> [ true | false ]</span></dt>
+<dt><code>queue_qos0_messages</code> [ true | false ]</dt>
 <dd>
-<p>Set to <em class="replaceable"><code>true</code></em> to queue
+<p>Set to <em><code>true</code></em> to queue
 						messages with QoS 0 when a persistent client is
 						disconnected. These messages are included in the limit
 						imposed by max_queued_messages.  Defaults to
-						<em class="replaceable"><code>false</code></em>.</p>
+						<em><code>false</code></em>.</p>
 <p>Note that the MQTT v3.1 spec states that only QoS 1
 						and 2 messages should be saved in this situation so
 						this is a non-standard option.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">retained_persistence</code> [ true | false ]</span></dt>
+<dt><code>retained_persistence</code> [ true | false ]</dt>
 <dd>
-<p>This is a synonym of the <code class="option">persistence</code>
+<p>This is a synonym of the <code>persistence</code>
 						option.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
@@ -487,62 +493,82 @@ Reloaded on reload signal.
 
 在发送 QoS=1 或 QoS=2 的消息后等待多长时间没有收到确认，mosquitto 将重新发送此消息。
 
-如果未设置，默认为20秒。
+默认值：20 秒
 
 Reloaded on reload signal.
 
 </dd>
 
-<dt><span class="term"><code class="option">store_clean_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
+<dt><code>store_clean_interval</code> <em><code>seconds</code></em></dt>
 <dd>
-<p>The integer number of seconds between the internal
-						message store being cleaned of messages that are no
-						longer referenced.  Lower values will result in lower
-						memory usage but more processor time, higher values
-						will have the opposite effect. Setting a value of 0
-						means the unreferenced messages will be disposed of as
-						quickly as possible. Defaults to 10 seconds.</p>
-<p>Reloaded on reload signal.</p>
+
+The integer number of seconds between the internal
+message store being cleaned of messages that are no
+longer referenced.  Lower values will result in lower
+memory usage but more processor time, higher values
+will have the opposite effect. Setting a value of 0
+means the unreferenced messages will be disposed of as
+quickly as possible.
+
+默认值：10 秒
+
+Reloaded on reload signal.
+
 </dd>
-<dt><span class="term"><code class="option">sys_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
+
+<dt><code>sys_interval</code> <em><code>seconds</code></em></dt>
 <dd>
-<p>The integer number of seconds between updates of the
-						$SYS subscription hierarchy, which provides status
-						information about the broker. If unset, defaults to 10
-						seconds.</p>
-<p>Set to 0 to disable publishing the $SYS hierarchy
-						completely.</p>
-<p>Reloaded on reload signal.</p>
+
+The integer number of seconds between updates of the
+$SYS subscription hierarchy, which provides status
+information about the broker.
+
+如果未设置，默认为 10 秒。
+
+Set to 0 to disable publishing the $SYS hierarchy completely.
+
+Reloaded on reload signal.
+
 </dd>
-<dt><span class="term"><code class="option">upgrade_outgoing_qos</code> [ true | false ]</span></dt>
+
+<dt><code>upgrade_outgoing_qos</code> [ true | false ]</dt>
 <dd>
 <p>The MQTT specification requires that the QoS of a
 						message delivered to a subscriber is never upgraded to
 						match the QoS of the subscription. Enabling this option
 						changes this behaviour. If
-						<code class="option">upgrade_outgoing_qos</code> is set
-						<em class="replaceable"><code>true</code></em>, messages sent to a
+						<code>upgrade_outgoing_qos</code> is set
+						<em><code>true</code></em>, messages sent to a
 						subscriber will always match the QoS of its
 						subscription. This is a non-standard option not
 						provided for by the spec. Defaults to
-						<em class="replaceable"><code>false</code></em>.</p>
+						<em><code>false</code></em>.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">user</code> <em class="replaceable"><code>username</code></em></span></dt>
+
+<dt><code>user</code> <em><code>username</code></em></dt>
 <dd>
-<p>When run as root, change to this user and its primary
-						group on startup.  If mosquitto is unable to change to
-						this user and group, it will exit with an error. The
-						user specified must have read/write access to the
-						persistence database if it is to be written. If run as
-						a non-root user, this setting has no effect. Defaults
-						to mosquitto.</p>
-<p>This setting has no effect on Windows and so you
-						should run mosquitto as the user you wish it to run
-						as.</p>
-<p>Not reloaded on reload signal.</p>
+
+When run as root, change to this user and its primary
+group on startup.  If mosquitto is unable to change to
+this user and group, it will exit with an error. The
+user specified must have read/write access to the
+persistence database if it is to be written. If run as
+a non-root user, this setting has no effect.
+
+默认值：mosquitto
+
+This setting has no effect on Windows and so you
+should run mosquitto as the user you wish it to run
+as.
+
+Not reloaded on reload signal.
+
 </dd>
-</dl></div>
+
+</dl>
+
+</div>
 </div>
 <div class="refsect1">
 <a name="idm45942561482032"></a><h2>Listeners</h2>
@@ -552,7 +578,7 @@ Reloaded on reload signal.
 <div class="refsect2">
 <a name="idm45942561480816"></a><h3>General Options</h3>
 <div class="variablelist"><dl class="variablelist">
-<dt><span class="term"><code class="option">bind_address</code> <em class="replaceable"><code>address</code></em></span></dt>
+<dt><code>bind_address</code> <em><code>address</code></em></dt>
 <dd>
 <p>Listen for incoming network connections on the
 							specified IP address/hostname only. This is useful
@@ -563,46 +589,46 @@ Reloaded on reload signal.
 							variable to control other listeners.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">http_dir</code> <em class="replaceable"><code>directory</code></em></span></dt>
+<dt><code>http_dir</code> <em><code>directory</code></em></dt>
 <dd>
 <p>When a listener is using the websockets protocol,
 							it is possible to serve http data as well. Set
-							<code class="option">http_dir</code> to a directory which
+							<code>http_dir</code> to a directory which
 							contains the files you wish to serve. If this
 							option is not specified, then no normal http
 							connections will be possible.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">listener</code> <em class="replaceable"><code>port</code></em> <em class="replaceable"><code>[<span class="optional">bind address/host</span>]</code></em></span></dt>
+<dt><code>listener</code> <em><code>port</code></em> <em><code>[bind address/host]</code></em></dt>
 <dd>
 <p>Listen for incoming network connection on the
 							specified port. A second optional argument allows
 							the listener to be bound to a specific ip
 							address/hostname. If this variable is used and
-							neither the global <code class="option">bind_address</code>
-							nor <code class="option">port</code> options are used then the
+							neither the global <code>bind_address</code>
+							nor <code>port</code> options are used then the
 							default listener will not be started.</p>
-<p>The <code class="option">bind address/host</code> option
+<p>The <code>bind address/host</code> option
 							allows this listener to be bound to a specific IP
 							address by passing an IP address or hostname. For
 							websockets listeners, it is only possible to pass
 							an IP address here.</p>
 <p>This option may be specified multiple times. See
-							also the <code class="option">mount_point</code>
+							also the <code>mount_point</code>
 							option.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">max_connections</code> <em class="replaceable"><code>count</code></em></span></dt>
+<dt><code>max_connections</code> <em><code>count</code></em></dt>
 <dd>
 <p>Limit the total number of clients connected for
 							the current listener. Set to <code class="literal">-1</code>
 							to have "unlimited" connections. Note that other
 							limits may be imposed that are outside the control
 							of mosquitto.  See e.g.
-							<span class="citerefentry"><span class="refentrytitle">limits.conf</span>(5)</span>.</p>
+							limits.conf(5).</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">mount_point</code> <em class="replaceable"><code>topic prefix</code></em></span></dt>
+<dt><code>mount_point</code> <em><code>topic prefix</code></em></dt>
 <dd>
 <p>This option is used with the listener option to
 							isolate groups of clients. When a client connects
@@ -611,34 +637,34 @@ Reloaded on reload signal.
 							this client. This prefix is removed when any
 							messages are sent to the client.  This means a
 							client connected to a listener with mount point
-							<em class="replaceable"><code>example</code></em> can only see
+							<em><code>example</code></em> can only see
 							messages that are published in the topic hierarchy
-							<em class="replaceable"><code>example</code></em> and above.</p>
+							<em><code>example</code></em> and above.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">port</code> <em class="replaceable"><code>port number</code></em></span></dt>
+<dt><code>port</code> <em><code>port number</code></em></dt>
 <dd>
 <p>Set the network port for the default listener to
 							listen on. Defaults to 1883.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">protocol</code> <em class="replaceable"><code>value</code></em></span></dt>
+<dt><code>protocol</code> <em><code>value</code></em></dt>
 <dd>
 <p>Set the protocol to accept for this listener. Can
-							be <code class="option">mqtt</code>, the default, or
-							<code class="option">websockets</code> if available.</p>
+							be <code>mqtt</code>, the default, or
+							<code>websockets</code> if available.</p>
 <p>Websockets support is currently disabled by
 							default at compile time. Certificate based TLS may be used
 							with websockets, except that only the
-							<code class="option">cafile</code>, <code class="option">certfile</code>,
-							<code class="option">keyfile</code> and
-							<code class="option">ciphers</code> options are
+							<code>cafile</code>, <code>certfile</code>,
+							<code>keyfile</code> and
+							<code>ciphers</code> options are
 							supported.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">use_username_as_clientid</code> [ true | false ]</span></dt>
+<dt><code>use_username_as_clientid</code> [ true | false ]</dt>
 <dd>
-<p>Set <code class="option">use_username_as_clientid</code> to
+<p>Set <code>use_username_as_clientid</code> to
 							true to replace the clientid that a client
 							connected with with its username. This allows
 							authentication to be tied to the clientid, which
@@ -648,12 +674,12 @@ Reloaded on reload signal.
 <p>If a client connects with no username it will be
 							disconnected as not authorised when this option is
 							set to true. Do not use in conjunction with
-							<code class="option">clientid_prefixes</code>.</p>
+							<code>clientid_prefixes</code>.</p>
 <p>See also
-							<code class="option">use_identity_as_username</code>.</p>
+							<code>use_identity_as_username</code>.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
-<dt><span class="term"><code class="option">websockets_log_level</code> <em class="replaceable"><code>level</code></em></span></dt>
+<dt><code>websockets_log_level</code> <em><code>level</code></em></dt>
 <dd>
 <p>Change the websockets logging level. This is a
 							global option, it is not possible to set per
@@ -661,7 +687,7 @@ Reloaded on reload signal.
 							libwebsockets as a bit mask for its lws_log_levels
 							enum. See the libwebsockets documentation for more
 							details.</p>
-<p>To use this option, <code class="option">log_type
+<p>To use this option, <code>log_type
 								websockets</code> must also be enabled.
 							Defaults to 0.</p>
 </dd>
@@ -673,72 +699,72 @@ Reloaded on reload signal.
 				configure certificate based SSL support. See also
 				"Pre-shared-key based SSL/TLS support".</p>
 <div class="variablelist"><dl class="variablelist">
-<dt><span class="term"><code class="option">cafile</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>cafile</code> <em><code>file path</code></em></dt>
 <dd>
-<p>At least one of <code class="option">cafile</code> or
-							<code class="option">capath</code> must be provided to allow
+<p>At least one of <code>cafile</code> or
+							<code>capath</code> must be provided to allow
 							SSL support.</p>
-<p><code class="option">cafile</code> is used to define the
+<p><code>cafile</code> is used to define the
 							path to a file containing the PEM encoded CA
 							certificates that are trusted.</p>
 </dd>
-<dt><span class="term"><code class="option">capath</code> <em class="replaceable"><code>directory path</code></em></span></dt>
+<dt><code>capath</code> <em><code>directory path</code></em></dt>
 <dd>
-<p>At least one of <code class="option">cafile</code> or
-							<code class="option">capath</code> must be provided to allow
+<p>At least one of <code>cafile</code> or
+							<code>capath</code> must be provided to allow
 							SSL support.</p>
-<p><code class="option">capath</code> is used to define a
+<p><code>capath</code> is used to define a
 							directory that contains PEM encoded CA certificates
-							that are trusted. For <code class="option">capath</code> to
+							that are trusted. For <code>capath</code> to
 							work correctly, the certificates files must have
 							".pem" as the file ending and you must run
 							"c_rehash &lt;path to capath&gt;" each time you
 							add/remove a certificate.</p>
 </dd>
-<dt><span class="term"><code class="option">certfile</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>certfile</code> <em><code>file path</code></em></dt>
 <dd><p>Path to the PEM encoded server certificate.</p></dd>
-<dt><span class="term"><code class="option">ciphers</code> <em class="replaceable"><code>cipher:list</code></em></span></dt>
+<dt><code>ciphers</code> <em><code>cipher:list</code></em></dt>
 <dd><p>The list of allowed ciphers, each separated with
 							a colon. Available ciphers can be obtained using
 							the "openssl ciphers" command.</p></dd>
-<dt><span class="term"><code class="option">crlfile</code> <em class="replaceable"><code>file path</code></em></span></dt>
-<dd><p>If you have <code class="option">require_certificate</code>
-							set to <em class="replaceable"><code>true</code></em>, you can
+<dt><code>crlfile</code> <em><code>file path</code></em></dt>
+<dd><p>If you have <code>require_certificate</code>
+							set to <em><code>true</code></em>, you can
 							create a certificate revocation list file to revoke
 							access to particular client certificates. If you
 							have done this, use crlfile to point to the PEM
 							encoded revocation file.</p></dd>
-<dt><span class="term"><code class="option">keyfile</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>keyfile</code> <em><code>file path</code></em></dt>
 <dd><p>Path to the PEM encoded keyfile.</p></dd>
-<dt><span class="term"><code class="option">require_certificate</code> [ true | false ]</span></dt>
+<dt><code>require_certificate</code> [ true | false ]</dt>
 <dd><p>By default an SSL/TLS enabled listener will
 							operate in a similar fashion to a https enabled web
 							server, in that the server has a certificate signed
 							by a CA and the client will verify that it is a
 							trusted certificate.  The overall aim is encryption
 							of the network traffic.  By setting
-							<code class="option">require_certificate</code> to
-							<em class="replaceable"><code>true</code></em>, the client must
+							<code>require_certificate</code> to
+							<em><code>true</code></em>, the client must
 							provide a valid certificate in order for the
 							network connection to proceed. This allows access
 							to the broker to be controlled outside of the
 							mechanisms provided by MQTT.</p></dd>
-<dt><span class="term"><code class="option">tls_version</code> <em class="replaceable"><code>version</code></em></span></dt>
+<dt><code>tls_version</code> <em><code>version</code></em></dt>
 <dd><p>Configure the version of the TLS protocol to be
 							used for this listener. Possible values are
-							<em class="replaceable"><code>tlsv1.2</code></em>,
-							<em class="replaceable"><code>tlsv1.1</code></em> and
-							<em class="replaceable"><code>tlsv1</code></em>. If left unset,
+							<em><code>tlsv1.2</code></em>,
+							<em><code>tlsv1.1</code></em> and
+							<em><code>tlsv1</code></em>. If left unset,
 							the default of allowing all of TLS v1.2, v1.1 and
 							v1.0 is used.</p></dd>
-<dt><span class="term"><code class="option">use_identity_as_username</code> [ true | false ]</span></dt>
-<dd><p>If <code class="option">require_certificate</code> is
-							<em class="replaceable"><code>true</code></em>, you may set
-							<code class="option">use_identity_as_username</code> to
-							<em class="replaceable"><code>true</code></em> to use the CN value
+<dt><code>use_identity_as_username</code> [ true | false ]</dt>
+<dd><p>If <code>require_certificate</code> is
+							<em><code>true</code></em>, you may set
+							<code>use_identity_as_username</code> to
+							<em><code>true</code></em> to use the CN value
 							from the client certificate as a username. If this
-							is <em class="replaceable"><code>true</code></em>, the
-							<code class="option">password_file</code> option will not be
+							is <em><code>true</code></em>, the
+							<code>password_file</code> option will not be
 							used for this listener.</p></dd>
 </dl></div>
 </div>
@@ -748,7 +774,7 @@ Reloaded on reload signal.
 				configure pre-shared-key based SSL support. See also
 				"Certificate based SSL/TLS support".</p>
 <div class="variablelist"><dl class="variablelist">
-<dt><span class="term"><code class="option">ciphers</code> <em class="replaceable"><code>cipher:list</code></em></span></dt>
+<dt><code>ciphers</code> <em><code>cipher:list</code></em></dt>
 <dd><p>When using PSK, the encryption ciphers used will
 							be chosen from the list of available PSK ciphers.
 							If you want to control which ciphers are available,
@@ -756,9 +782,9 @@ Reloaded on reload signal.
 							be optained using the "openssl ciphers" command and
 							should be provided in the same format as the output
 							of that command.</p></dd>
-<dt><span class="term"><code class="option">psk_hint</code> <em class="replaceable"><code>hint</code></em></span></dt>
+<dt><code>psk_hint</code> <em><code>hint</code></em></dt>
 <dd>
-<p>The <code class="option">psk_hint</code> option enables
+<p>The <code>psk_hint</code> option enables
 							pre-shared-key support for this listener and also
 							acts as an identifier for this listener. The hint
 							is sent to clients and may be used locally to aid
@@ -766,23 +792,23 @@ Reloaded on reload signal.
 							doesn't have much meaning in itself, so feel free
 							to be creative.</p>
 <p>If this option is provided, see
-							<code class="option">psk_file</code> to define the pre-shared
+							<code>psk_file</code> to define the pre-shared
 							keys to be used or create a security plugin to
 							handle them.</p>
 </dd>
-<dt><span class="term"><code class="option">tls_version</code> <em class="replaceable"><code>version</code></em></span></dt>
+<dt><code>tls_version</code> <em><code>version</code></em></dt>
 <dd><p>Configure the version of the TLS protocol to be
 							used for this listener. Possible values are
-							<em class="replaceable"><code>tlsv1.2</code></em>,
-							<em class="replaceable"><code>tlsv1.1</code></em> and
-							<em class="replaceable"><code>tlsv1</code></em>. If left unset,
+							<em><code>tlsv1.2</code></em>,
+							<em><code>tlsv1.1</code></em> and
+							<em><code>tlsv1</code></em>. If left unset,
 							the default of allowing all of TLS v1.2, v1.1 and
 							v1.0 is used.</p></dd>
-<dt><span class="term"><code class="option">use_identity_as_username</code> [ true | false ]</span></dt>
-<dd><p>Set <code class="option">use_identity_as_username</code> to
+<dt><code>use_identity_as_username</code> [ true | false ]</dt>
+<dd><p>Set <code>use_identity_as_username</code> to
 							have the psk identity sent by the client used as
 							its username.  The username will be checked as
-							normal, so <code class="option">password_file</code> or
+							normal, so <code>password_file</code> or
 							another means of authentication checking must be
 							used. No password will be used.</p></dd>
 </dl></div>
@@ -795,7 +821,7 @@ Reloaded on reload signal.
 <p>Bridges cannot currently be reloaded on reload signal.</p>
 <div class="variablelist"><dl class="variablelist">
 <dt>
-<span class="term"><code class="option">address</code> <em class="replaceable"><code>address[:port]</code></em> <em class="replaceable"><code>[address[:port]]</code></em>, </span><span class="term"><code class="option">addresses</code> <em class="replaceable"><code>address[:port]</code></em> <em class="replaceable"><code>[address[:port]]</code></em></span>
+<code>address</code> <em><code>address[:port]</code></em> <em><code>[address[:port]]</code></em>, <code>addresses</code> <em><code>address[:port]</code></em> <em><code>[address[:port]]</code></em>
 </dt>
 <dd>
 <p>Specify the address and optionally the port of the
@@ -803,96 +829,96 @@ Reloaded on reload signal.
 						bridge connection. If the port is not specified, the
 						default of 1883 is used.</p>
 <p>Multiple host addresses can be specified on the
-						address config. See the <code class="option">round_robin</code>
+						address config. See the <code>round_robin</code>
 						option for more details on the behaviour of bridges
 						with multiple addresses.</p>
 </dd>
-<dt><span class="term"><code class="option">bridge_attempt_unsubscribe</code> [ true | false ]</span></dt>
+<dt><code>bridge_attempt_unsubscribe</code> [ true | false ]</dt>
 <dd><p>If a bridge has topics that have "out" direction, the
 						default behaviour is to send an unsubscribe request to
 						the remote broker on that topic. This means that
 						changing a topic direction from "in" to "out" will not
 						keep receiving incoming messages. Sending these
 						unsubscribe requests is not always desirable, setting
-						<code class="option">bridge_attempt_unsubscribe</code> to
-						<em class="replaceable"><code>false</code></em> will disable sending
+						<code>bridge_attempt_unsubscribe</code> to
+						<em><code>false</code></em> will disable sending
 						the unsubscribe request. Defaults to
-						<em class="replaceable"><code>true</code></em>.</p></dd>
-<dt><span class="term"><code class="option">bridge_protocol_version</code> <em class="replaceable"><code>version</code></em></span></dt>
+						<em><code>true</code></em>.</p></dd>
+<dt><code>bridge_protocol_version</code> <em><code>version</code></em></dt>
 <dd><p>Set the version of the MQTT protocol to use with for
 						this bridge. Can be one of
-						<em class="replaceable"><code>mqttv31</code></em> or
-						<em class="replaceable"><code>mqttv311</code></em>. Defaults to
-						<em class="replaceable"><code>mqttv31</code></em>.</p></dd>
-<dt><span class="term"><code class="option">cleansession</code> [ true | false ]</span></dt>
+						<em><code>mqttv31</code></em> or
+						<em><code>mqttv311</code></em>. Defaults to
+						<em><code>mqttv31</code></em>.</p></dd>
+<dt><code>cleansession</code> [ true | false ]</dt>
 <dd>
 <p>Set the clean session option for this bridge. Setting
-						to <em class="replaceable"><code>false</code></em> (the default),
+						to <em><code>false</code></em> (the default),
 						means that all subscriptions on the remote broker are
 						kept in case of the network connection dropping. If set
-						to <em class="replaceable"><code>true</code></em>, all subscriptions
+						to <em><code>true</code></em>, all subscriptions
 						and messages on the remote broker will be cleaned up if
 						the connection drops. Note that setting to
-						<em class="replaceable"><code>true</code></em> may cause a large
+						<em><code>true</code></em> may cause a large
 						amount of retained messages to be sent each time the
 						bridge reconnects.</p>
 <p>If you are using bridges with
-						<code class="option">cleansession</code> set to
-						<em class="replaceable"><code>false</code></em> (the default), then
+						<code>cleansession</code> set to
+						<em><code>false</code></em> (the default), then
 						you may get unexpected behaviour from incoming topics
 						if you change what topics you are subscribing to. This
 						is because the remote broker keeps the subscription for
 						the old topic.  If you have this problem, connect your
-						bridge with <code class="option">cleansession</code> set to
-						<em class="replaceable"><code>true</code></em>, then reconnect with
-						cleansession set to <em class="replaceable"><code>false</code></em> as
+						bridge with <code>cleansession</code> set to
+						<em><code>true</code></em>, then reconnect with
+						cleansession set to <em><code>false</code></em> as
 						normal.</p>
 </dd>
-<dt><span class="term"><code class="option">connection</code> <em class="replaceable"><code>name</code></em></span></dt>
+<dt><code>connection</code> <em><code>name</code></em></dt>
 <dd><p>This variable marks the start of a new bridge
 						connection. It is also used to give the bridge a name
 						which is used as the client id on the remote
 						broker.</p></dd>
-<dt><span class="term"><code class="option">keepalive_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
+<dt><code>keepalive_interval</code> <em><code>seconds</code></em></dt>
 <dd><p>Set the number of seconds after which the bridge
 						should send a ping if no other traffic has occurred.
 						Defaults to 60. A minimum value of 5 seconds
 						is allowed.</p></dd>
-<dt><span class="term"><code class="option">idle_timeout</code> <em class="replaceable"><code>seconds</code></em></span></dt>
+<dt><code>idle_timeout</code> <em><code>seconds</code></em></dt>
 <dd><p>Set the amount of time a bridge using the lazy start
 						type must be idle before it will be stopped. Defaults
 						to 60 seconds.</p></dd>
-<dt><span class="term"><code class="option">local_clientid</code> <em class="replaceable"><code>id</code></em></span></dt>
+<dt><code>local_clientid</code> <em><code>id</code></em></dt>
 <dd><p>Set the clientid to use on the local broker. If not
 						defined, this defaults to
-						<code class="option">local.&lt;clientid&gt;</code>. If you are
+						<code>local.&lt;clientid&gt;</code>. If you are
 						bridging a broker to itself, it is important that
 						local_clientid and clientid do not match.</p></dd>
-<dt><span class="term"><code class="option">local_password</code> <em class="replaceable"><code>password</code></em></span></dt>
+<dt><code>local_password</code> <em><code>password</code></em></dt>
 <dd><p>Configure the password to be used when connecting
 						this bridge to the local broker. This may be important
 						when authentication and ACLs are being used.</p></dd>
-<dt><span class="term"><code class="option">local_username</code> <em class="replaceable"><code>username</code></em></span></dt>
+<dt><code>local_username</code> <em><code>username</code></em></dt>
 <dd><p>Configure the username to be used when connecting
 						this bridge to the local broker. This may be important
 						when authentication and ACLs are being used.</p></dd>
-<dt><span class="term"><code class="option">notifications</code> [ true | false ]</span></dt>
-<dd><p>If set to <em class="replaceable"><code>true</code></em>, publish
+<dt><code>notifications</code> [ true | false ]</dt>
+<dd><p>If set to <em><code>true</code></em>, publish
 						notification messages to the local and remote brokers
 						giving information about the state of the bridge
 						connection. Retained messages are published to the
 						topic $SYS/broker/connection/&lt;clientid&gt;/state
 						unless otherwise set with
-						<code class="option">notification_topic</code>s.  If the message
+						<code>notification_topic</code>s.  If the message
 						is 1 then the connection is active, or 0 if the
 						connection has failed. Defaults to
-						<em class="replaceable"><code>true</code></em>.</p></dd>
-<dt><span class="term"><code class="option">notification_topic</code> <em class="replaceable"><code>topic</code></em></span></dt>
+						<em><code>true</code></em>.</p></dd>
+<dt><code>notification_topic</code> <em><code>topic</code></em></dt>
 <dd><p>Choose the topic on which notifications will be
 						published for this bridge. If not set the messages will
 						be sent on the topic
 						$SYS/broker/connection/&lt;clientid&gt;/state.</p></dd>
-<dt><span class="term"><code class="option">remote_clientid</code> <em class="replaceable"><code>id</code></em></span></dt>
+<dt><code>remote_clientid</code> <em><code>id</code></em></dt>
 <dd>
 <p>Set the client id for this bridge connection. If not
 						defined, this defaults to 'name.hostname', where name
@@ -902,7 +928,7 @@ Reloaded on reload signal.
 						confusion with local/remote sides of the bridge.
 						"clientid" remains valid for the time being.</p>
 </dd>
-<dt><span class="term"><code class="option">remote_password</code> <em class="replaceable"><code>value</code></em></span></dt>
+<dt><code>remote_password</code> <em><code>value</code></em></dt>
 <dd>
 <p>Configure a password for the bridge. This is used for
 						authentication purposes when connecting to a broker
@@ -913,85 +939,85 @@ Reloaded on reload signal.
 						confusion with local/remote sides of the bridge.
 						"password" remains valid for the time being.</p>
 </dd>
-<dt><span class="term"><code class="option">remote_username</code> <em class="replaceable"><code>name</code></em></span></dt>
+<dt><code>remote_username</code> <em><code>name</code></em></dt>
 <dd>
 <p>Configure a username for the bridge. This is used for
 						authentication purposes when connecting to a broker
 						that supports MQTT v3.1 and up and requires a username
 						and/or password to connect. See also the
-						<code class="option">remote_password</code> option.</p>
+						<code>remote_password</code> option.</p>
 <p>This replaces the old "username" option to avoid
 						confusion with local/remote sides of the bridge.
 						"username" remains valid for the time being.</p>
 </dd>
-<dt><span class="term"><code class="option">restart_timeout</code> <em class="replaceable"><code>value</code></em></span></dt>
+<dt><code>restart_timeout</code> <em><code>value</code></em></dt>
 <dd><p>Set the amount of time a bridge using the automatic
 						start type will wait until attempting to reconnect.
 						Defaults to 30 seconds.</p></dd>
-<dt><span class="term"><code class="option">round_robin</code> [ true | false ]</span></dt>
+<dt><code>round_robin</code> [ true | false ]</dt>
 <dd>
 <p>If the bridge has more than one address given in the
 						address/addresses configuration, the round_robin option
 						defines the behaviour of the bridge on a failure of the
 						bridge connection. If round_robin is
-						<em class="replaceable"><code>false</code></em>, the default value,
+						<em><code>false</code></em>, the default value,
 						then the first address is treated as the main bridge
 						connection. If the connection fails, the other
 						secondary addresses will be attempted in turn. Whilst
 						connected to a secondary bridge, the bridge will
 						periodically attempt to reconnect to the main bridge
 						until successful.</p>
-<p>If round_robin is <em class="replaceable"><code>true</code></em>,
+<p>If round_robin is <em><code>true</code></em>,
 						then all addresses are treated as equals. If a
 						connection fails, the next address will be tried and if
 						successful will remain connected until it fails.</p>
 </dd>
-<dt><span class="term"><code class="option">start_type</code> [ automatic | lazy | once ]</span></dt>
+<dt><code>start_type</code> [ automatic | lazy | once ]</dt>
 <dd>
 <p>Set the start type of the bridge. This controls how
 						the bridge starts and can be one of three types:
-						<em class="replaceable"><code>automatic</code></em>, <em class="replaceable"><code>lazy
-						</code></em>and <em class="replaceable"><code>once</code></em>. Note
+						<em><code>automatic</code></em>, <em><code>lazy
+						</code></em>and <em><code>once</code></em>. Note
 						that RSMB provides a fourth start type "manual" which
 						isn't currently supported by mosquitto.</p>
-<p><em class="replaceable"><code>automatic</code></em> is the default
+<p><em><code>automatic</code></em> is the default
 						start type and means that the bridge connection will be
 						started automatically when the broker starts and also
 						restarted after a short delay (30 seconds) if the
 						connection fails.</p>
-<p>Bridges using the <em class="replaceable"><code>lazy</code></em>
+<p>Bridges using the <em><code>lazy</code></em>
 						start type will be started automatically when the
 						number of queued messages exceeds the number set with
-						the <code class="option">threshold</code> option. It will be
+						the <code>threshold</code> option. It will be
 						stopped automatically after the time set by the
-						<code class="option">idle_timeout</code> parameter. Use this start
+						<code>idle_timeout</code> parameter. Use this start
 						type if you wish the connection to only be active when
 						it is needed.</p>
-<p>A bridge using the <em class="replaceable"><code>once</code></em>
+<p>A bridge using the <em><code>once</code></em>
 						start type will be started automatically when the
 						broker starts but will not be restarted if the
 						connection fails.</p>
 </dd>
-<dt><span class="term"><code class="option">threshold</code> <em class="replaceable"><code>count</code></em></span></dt>
+<dt><code>threshold</code> <em><code>count</code></em></dt>
 <dd><p>Set the number of messages that need to be queued for
 						a bridge with lazy start type to be restarted.
 						Defaults to 10 messages.</p></dd>
-<dt><span class="term"><code class="option">topic</code> <em class="replaceable"><code>pattern</code></em> [[[ out | in | both ] qos-level] local-prefix remote-prefix]</span></dt>
+<dt><code>topic</code> <em><code>pattern</code></em> [[[ out | in | both ] qos-level] local-prefix remote-prefix]</dt>
 <dd>
 <p>Define a topic pattern to be shared between the two
 						brokers. Any topics matching the pattern (which may
 						include wildcards) are shared. The second parameter
 						defines the direction that the messages will be shared
 						in, so it is possible to import messages from a remote
-						broker using <em class="replaceable"><code>in</code></em>, export
+						broker using <em><code>in</code></em>, export
 						messages to a remote broker using
-						<em class="replaceable"><code>out</code></em> or share messages in
+						<em><code>out</code></em> or share messages in
 						both directions. If this parameter is not defined, the
-						default of <em class="replaceable"><code>out</code></em> is used. The
+						default of <em><code>out</code></em> is used. The
 						QoS level defines the publish/subscribe QoS level used
 						for this topic and defaults to 0.</p>
-<p>The <em class="replaceable"><code>local-prefix</code></em> and
-						<em class="replaceable"><code>remote-prefix</code></em> options allow
+<p>The <em><code>local-prefix</code></em> and
+						<em><code>remote-prefix</code></em> options allow
 						topics to be remapped when publishing to and receiving
 						from remote brokers. This allows a topic tree from the
 						local broker to be inserted into the topic tree of the
@@ -1009,7 +1035,7 @@ Reloaded on reload signal.
 						from the topic then the remote prefix added.</p>
 <p>When using topic mapping, an empty prefix can be
 						defined using the place marker
-						<em class="replaceable"><code>""</code></em>. Using the empty marker
+						<em><code>""</code></em>. Using the empty marker
 						for the topic itself is also valid. The table below
 						defines what combination of empty or value is
 						valid.</p>
@@ -1023,10 +1049,10 @@ Reloaded on reload signal.
 </colgroup>
 <thead><tr>
 <th> </th>
-<th><span class="emphasis"><em>Topic</em></span></th>
-<th><span class="emphasis"><em>Local Prefix</em></span></th>
-<th><span class="emphasis"><em>Remote Prefix</em></span></th>
-<th><span class="emphasis"><em>Validity</em></span></th>
+<th><em>Topic</em></th>
+<th><em>Local Prefix</em></th>
+<th><em>Remote Prefix</em></th>
+<th><em>Validity</em></th>
 </tr></thead>
 <tbody>
 <tr>
@@ -1097,18 +1123,18 @@ topic # both 2 local/topic/ remote/topic/</pre>
 						CPU load from a broker, it is possible that you have a
 						loop where each broker is forever forwarding each other
 						the same messages.</p>
-<p>See also the <code class="option">cleansession</code> option if
+<p>See also the <code>cleansession</code> option if
 						you have messages arriving on unexpected topics when
 						using incoming topics.</p>
 <div class="example">
 <a name="idm45942561296432"></a><div class="example-title">Example Bridge Topic Remapping. </div>
 <div class="example-contents">
 <p>The configuration below connects a bridge to the
-							broker at <code class="option">test.mosquitto.org</code>. It
+							broker at <code>test.mosquitto.org</code>. It
 							subscribes to the remote topic
-							<code class="option">$SYS/broker/clients/total</code> and
+							<code>$SYS/broker/clients/total</code> and
 							republishes the messages received to the local topic
-							<code class="option">test/mosquitto/org/clients/total</code></p>
+							<code>test/mosquitto/org/clients/total</code></p>
 <pre class="programlisting">
 connection test-mosquitto-org
 address test.mosquitto.org
@@ -1119,19 +1145,19 @@ topic clients/total in 0 test/mosquitto/org $SYS/broker/
 </div>
 <br class="example-break">
 </dd>
-<dt><span class="term"><code class="option">try_private</code> [ true | false ]</span></dt>
+<dt><code>try_private</code> [ true | false ]</dt>
 <dd>
 <p>If try_private is set to
-						<em class="replaceable"><code>true</code></em>, the bridge will
+						<em><code>true</code></em>, the bridge will
 						attempt to indicate to the remote broker that it is a
 						bridge not an ordinary client. If successful, this
 						means that loop detection will be more effective and
 						that retained messages will be propagated correctly.
 						Not all brokers support this feature so it may be
-						necessary to set <code class="option">try_private</code> to
-						<em class="replaceable"><code>false</code></em> if your bridge does
+						necessary to set <code>try_private</code> to
+						<em><code>false</code></em> if your bridge does
 						not connect properly.</p>
-<p>Defaults to <em class="replaceable"><code>true</code></em>.</p>
+<p>Defaults to <em><code>true</code></em>.</p>
 </dd>
 </dl></div>
 <div class="refsect2">
@@ -1139,7 +1165,7 @@ topic clients/total in 0 test/mosquitto/org $SYS/broker/
 <p>The following options are available for all bridges to
 				configure SSL/TLS support.</p>
 <div class="variablelist"><dl class="variablelist">
-<dt><span class="term"><code class="option">bridge_attempt_unsubscribe</code> [ true | false ]</span></dt>
+<dt><code>bridge_attempt_unsubscribe</code> [ true | false ]</dt>
 <dd><p>If a bridge has topics that have "out" direction,
 							the default behaviour is to send an unsubscribe
 							request to the remote broker on that topic. This
@@ -1147,23 +1173,23 @@ topic clients/total in 0 test/mosquitto/org $SYS/broker/
 							"out" will not keep receiving incoming messages.
 							Sending these unsubscribe requests is not always
 							desirable, setting
-							<code class="option">bridge_attempt_unsubscribe</code> to
-							<em class="replaceable"><code>false</code></em> will disable
+							<code>bridge_attempt_unsubscribe</code> to
+							<em><code>false</code></em> will disable
 							sending the unsubscribe request.</p></dd>
-<dt><span class="term"><code class="option">bridge_cafile</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>bridge_cafile</code> <em><code>file path</code></em></dt>
 <dd>
-<p>One of <code class="option">bridge_cafile</code> or
-							<code class="option">bridge_capath</code> must be provided to
+<p>One of <code>bridge_cafile</code> or
+							<code>bridge_capath</code> must be provided to
 							allow SSL/TLS support.</p>
 <p>bridge_cafile is used to define the path to a file
 							containing the PEM encoded CA certificates that
 							have signed the certificate for the remote broker.
 						</p>
 </dd>
-<dt><span class="term"><code class="option">bridge_capath</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>bridge_capath</code> <em><code>file path</code></em></dt>
 <dd>
-<p>One of <code class="option">bridge_capath</code> or
-							<code class="option">bridge_capath</code> must be provided to
+<p>One of <code>bridge_capath</code> or
+							<code>bridge_capath</code> must be provided to
 							allow SSL/TLS support.</p>
 <p>bridge_capath is used to define the path to a
 							directory containing the PEM encoded CA
@@ -1174,54 +1200,54 @@ topic clients/total in 0 test/mosquitto/org $SYS/broker/
 							&lt;path to bridge_capath&gt;" each time you
 							add/remove a certificate.</p>
 </dd>
-<dt><span class="term"><code class="option">bridge_certfile</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>bridge_certfile</code> <em><code>file path</code></em></dt>
 <dd><p>Path to the PEM encoded client certificate for
 							this bridge, if required by the remote
 							broker.</p></dd>
-<dt><span class="term"><code class="option">bridge_identity</code> <em class="replaceable"><code>identity</code></em></span></dt>
+<dt><code>bridge_identity</code> <em><code>identity</code></em></dt>
 <dd><p>Pre-shared-key encryption provides an alternative
 							to certificate based encryption. A bridge can be
 							configured to use PSK with the
-							<code class="option">bridge_identity</code> and
-							<code class="option">bridge_psk</code> options.  This is the
+							<code>bridge_identity</code> and
+							<code>bridge_psk</code> options.  This is the
 							client identity used with PSK encryption. Only one
 							of certificate and PSK based encryption can be used
 							on one bridge at once.</p></dd>
-<dt><span class="term"><code class="option">bridge_insecure</code> [ true | false ]</span></dt>
+<dt><code>bridge_insecure</code> [ true | false ]</dt>
 <dd>
 <p>When using certificate based TLS, the bridge will
 							attempt to verify the hostname provided in the
 							remote certificate matches the host/address being
 							connected to. This may cause problems in testing
-							scenarios, so <code class="option">bridge_insecure</code> may
-							be set to <em class="replaceable"><code>false</code></em> to
+							scenarios, so <code>bridge_insecure</code> may
+							be set to <em><code>false</code></em> to
 							disable the hostname verification.</p>
 <p>Setting this option to
-							<em class="replaceable"><code>true</code></em> means that a
+							<em><code>true</code></em> means that a
 							malicious third party could potentially inpersonate
 							your server, so it should always be set to
-							<em class="replaceable"><code>false</code></em> in production
+							<em><code>false</code></em> in production
 							environments.</p>
 </dd>
-<dt><span class="term"><code class="option">bridge_keyfile</code> <em class="replaceable"><code>file path</code></em></span></dt>
+<dt><code>bridge_keyfile</code> <em><code>file path</code></em></dt>
 <dd><p>Path to the PEM encoded private key for this
 							bridge, if required by the remote broker.</p></dd>
-<dt><span class="term"><code class="option">bridge_psk</code> <em class="replaceable"><code>key</code></em></span></dt>
+<dt><code>bridge_psk</code> <em><code>key</code></em></dt>
 <dd><p>Pre-shared-key encryption provides an alternative
 							to certificate based encryption. A bridge can be
 							configured to use PSK with the
-							<code class="option">bridge_identity</code> and
-							<code class="option">bridge_psk</code> options.  This is the
+							<code>bridge_identity</code> and
+							<code>bridge_psk</code> options.  This is the
 							pre-shared-key in hexadecimal format with no "0x".
 							Only one of certificate and PSK based encryption
 							can be used on one bridge at once.</p></dd>
-<dt><span class="term"><code class="option">bridge_tls_version</code> <em class="replaceable"><code>version</code></em></span></dt>
+<dt><code>bridge_tls_version</code> <em><code>version</code></em></dt>
 <dd><p>Configure the version of the TLS protocol to be
 							used for this bridge. Possible values are
-							<em class="replaceable"><code>tlsv1.2</code></em>,
-							<em class="replaceable"><code>tlsv1.1</code></em> and
-							<em class="replaceable"><code>tlsv1</code></em>. Defaults to
-							<em class="replaceable"><code>tlsv1.2</code></em>. The remote
+							<em><code>tlsv1.2</code></em>,
+							<em><code>tlsv1.1</code></em> and
+							<em><code>tlsv1</code></em>. Defaults to
+							<em><code>tlsv1.2</code></em>. The remote
 							broker must support the same version of TLS for the
 							connection to succeed.</p></dd>
 </dl></div>
@@ -1233,22 +1259,22 @@ topic clients/total in 0 test/mosquitto/org $SYS/broker/
 </div>
 <div class="refsect1">
 <a name="idm45942561254720"></a><h2>Bugs</h2>
-<p><span class="command"><strong>mosquitto</strong></span> bug information can be found at
+<p><strong>mosquitto</strong> bug information can be found at
 			<a class="ulink" href="https://github.com/eclipse/mosquitto/issues" target="_top">https://github.com/eclipse/mosquitto/issues</a></p>
 </div>
 <div class="refsect1">
 <a name="idm45942561252768"></a><h2>See Also</h2>
-<span class="simplelist">
-				<span class="citerefentry"><span class="refentrytitle"><a class="link" href="mosquitto-8.html" target="_top">mosquitto</a></span>(8)</span>
+
+				<a class="link" href="mosquitto-8.html" target="_top">mosquitto</a>(8)
 			, 
-				<span class="citerefentry"><span class="refentrytitle"><a class="link" href="mosquitto_passwd-1.html" target="_top">mosquitto_passwd</a></span>(1)</span>
+				<a class="link" href="mosquitto_passwd-1.html" target="_top">mosquitto_passwd</a>(1)
 			, 
-				<span class="citerefentry"><span class="refentrytitle"><a class="link" href="mosquitto-tls-7.html" target="_top">mosquitto-tls</a></span>(7)</span>
+				<a class="link" href="mosquitto-tls-7.html" target="_top">mosquitto-tls</a>(7)
 			, 
-				<span class="citerefentry"><span class="refentrytitle"><a class="link" href="mqtt-7.html" target="_top">mqtt</a></span>(7)</span>
+				<a class="link" href="mqtt-7.html" target="_top">mqtt</a>(7)
 			, 
-				<span class="citerefentry"><span class="refentrytitle"><a class="link" href="http://linux.die.net/man/5/limits.conf" target="_top">limits.conf</a></span>(5)</span>
-			</span>
+				<a class="link" href="http://linux.die.net/man/5/limits.conf" target="_top">limits.conf</a>(5)
+			
 </div>
 <div class="refsect1">
 <a name="idm45942561241360"></a><h2>Author</h2>
