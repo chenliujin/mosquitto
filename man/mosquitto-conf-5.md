@@ -650,6 +650,8 @@ Not reloaded on reload signal.
 							connections will be possible.</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
+
+
 <dt><code>listener</code> <em><code>port</code></em> <em><code>[bind address/host]</code></em></dt>
 <dd>
 <p>Listen for incoming network connection on the
@@ -668,7 +670,10 @@ Not reloaded on reload signal.
 							also the <code>mount_point</code>
 							option.</p>
 <p>Not reloaded on reload signal.</p>
+
 </dd>
+
+
 <dt><code>max_connections</code> <em><code>count</code></em></dt>
 <dd>
 <p>Limit the total number of clients connected for
@@ -772,8 +777,16 @@ Not reloaded on reload signal.
 							"c_rehash &lt;path to capath&gt;" each time you
 							add/remove a certificate.</p>
 </dd>
+
+
 <dt><code>certfile</code> <em><code>file path</code></em></dt>
-<dd><p>Path to the PEM encoded server certificate.</p></dd>
+<dd>
+
+Path to the PEM encoded server certificate.
+
+</dd>
+
+
 <dt><code>ciphers</code> <em><code>cipher:list</code></em></dt>
 <dd><p>The list of allowed ciphers, each separated with
 							a colon. Available ciphers can be obtained using
@@ -784,9 +797,18 @@ Not reloaded on reload signal.
 							create a certificate revocation list file to revoke
 							access to particular client certificates. If you
 							have done this, use crlfile to point to the PEM
-							encoded revocation file.</p></dd>
+							encoded revocation file.</p>
+</dd>
+
+
 <dt><code>keyfile</code> <em><code>file path</code></em></dt>
-<dd><p>Path to the PEM encoded keyfile.</p></dd>
+<dd>
+
+Path to the PEM encoded keyfile.
+
+</dd>
+
+
 <dt><code>require_certificate</code> [ true | false ]</dt>
 <dd><p>By default an SSL/TLS enabled listener will
 							operate in a similar fashion to a https enabled web
