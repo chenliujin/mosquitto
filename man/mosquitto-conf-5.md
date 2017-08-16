@@ -488,11 +488,13 @@ Reloaded on reload signal.
 
 </dt>
 <dd>
+
 mosquitto 在发送 QoS=1 或 QoS=2 的消息后等待多长时间没有收到确认，将重新发送此消息。
 
 如果未设置，默认为20秒。
 
 Reloaded on reload signal.
+
 </dd>
 
 <dt><span class="term"><code class="option">store_clean_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
