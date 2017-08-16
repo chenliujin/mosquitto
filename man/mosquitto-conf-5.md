@@ -393,32 +393,31 @@ Reloaded on reload signal.
 						<em class="replaceable"><code>false</code></em>.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
+
 <dt><span class="term"><code class="option">persistence_file</code> <em class="replaceable"><code>file name</code></em></span></dt>
 <dd>
-<p>The filename to use for the persistent database.
-						Defaults to mosquitto.db.</p>
-<p>Reloaded on reload signal.</p>
+The filename to use for the persistent database.
+Defaults to mosquitto.db.
+
+Reloaded on reload signal.
 </dd>
+
 <dt><span class="term"><code class="option">persistence_location</code> <em class="replaceable"><code>path</code></em></span></dt>
 <dd>
-<p>The path where the persistence database should be
-						stored. Must end in a trailing slash. If not given,
-						then the current directory is used.</p>
-<p>Reloaded on reload signal.</p>
+The path where the persistence database should be
+stored. Must end in a trailing slash. If not given,
+then the current directory is used.
+
+Reloaded on reload signal.
 </dd>
 
 <dt><span class="term"><code class="option">persistent_client_expiration</code> <em class="replaceable"><code>duration</code></em></span></dt>
 <dd>
 This option allows persistent clients (those with
 clean session set to false) to be removed if they do
-not reconnect within a certain time frame. This is a
-non-standard option. As far as the MQTT spec is
-concerned, persistent clients persist forever.
+not reconnect within a certain time frame. 
 
-Badly designed clients may set clean session to false
-whilst using a randomly generated client id. This leads
-to persistent clients that will never reconnect. This
-option allows these clients to be removed.
+参数配置错误的客户端会将 clean session 设为 false，同时使用随机生成的 client id，将导致这些持久客户端永远不会重新连接。 此选项允许删除这些客户端。 
 
 The expiration period should be an integer followed
 by one of h d w m y for hour, day, week, month and year
@@ -428,7 +427,9 @@ respectively. For example:
 - persistent_client_expiration 14d
 - persistent_client_expiration 1y
 
-非标准选项，默认（如果未设置）是永不过期的持久性客户端。
+This is a non-standard option in MQTT V3.1 but allowed in MQTT v3.1.1.
+
+默认（如果未设置）是永不过期的持久性客户端。
 
 Reloaded on reload signal.
 </dd>
@@ -480,14 +481,20 @@ Reloaded on reload signal.
 						option.</p>
 <p>Reloaded on reload signal.</p>
 </dd>
+
 <dt><span class="term"><code class="option">retry_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
 <dd>
-<p>The integer number of seconds after a QoS=1 or QoS=2
-						message has been sent that mosquitto will wait before
-						retrying when no response is received. If unset,
-						defaults to 20 seconds.</p>
-<p>Reloaded on reload signal.</p>
+Time in seconds to wait before resending an outgoing QoS=1 or QoS=2 message.
+
+The integer number of seconds after a QoS=1 or QoS=2
+message has been sent that mosquitto will wait before
+retrying when no response is received.
+
+如果未设置，默认为20秒。
+
+Reloaded on reload signal.
 </dd>
+
 <dt><span class="term"><code class="option">store_clean_interval</code> <em class="replaceable"><code>seconds</code></em></span></dt>
 <dd>
 <p>The integer number of seconds between the internal
