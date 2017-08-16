@@ -338,14 +338,18 @@ Reloaded on reload signal.
 
 </dd>
 
+
 <dt><code>max_queued_messages</code> <em><code>count</code></em></dt>
 <dd>
-<p>The maximum number of QoS 1 or 2 messages to hold in
-						the queue above those messages that are currently in
-						flight. Defaults to 100. Set to 0 for no maximum (not
-						recommended). See also the
-						<code>queue_qos0_messages</code> option.</p>
-<p>Reloaded on reload signal.</p>
+
+当超过当前同时 in flight 的消息数量时，允许 QoS 1 or 2 消息保存到队列中的最大数量。
+
+默认值：100
+
+Set to 0 for no maximum (not recommended). See also the <code>queue_qos0_messages</code> option.
+
+Reloaded on reload signal.
+
 </dd>
 
 
@@ -469,18 +473,27 @@ Reloaded on reload signal.
 						Clients that are already connected will not be
 						affected.</p>
 </dd>
+
+
 <dt><code>queue_qos0_messages</code> [ true | false ]</dt>
 <dd>
-<p>Set to <em><code>true</code></em> to queue
-						messages with QoS 0 when a persistent client is
-						disconnected. These messages are included in the limit
-						imposed by max_queued_messages.  Defaults to
-						<em><code>false</code></em>.</p>
-<p>Note that the MQTT v3.1 spec states that only QoS 1
-						and 2 messages should be saved in this situation so
-						this is a non-standard option.</p>
-<p>Reloaded on reload signal.</p>
+
+Set to <em><code>true</code></em> to queue
+messages with QoS 0 when a persistent client is
+disconnected. These messages are included in the limit
+imposed by max_queued_messages.  
+
+默认值：*`false`*
+
+Note that the MQTT v3.1 spec states that only QoS 1
+and 2 messages should be saved in this situation so
+this is a non-standard option.
+
+Reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>retained_persistence</code> [ true | false ]</dt>
 <dd>
 <p>This is a synonym of the <code>persistence</code>
