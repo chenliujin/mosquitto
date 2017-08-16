@@ -260,48 +260,41 @@ Reloaded on reload signal.
 						is best to have this as the last option in the main
 						file. This option will only be processed from the main
 						configuration file. The directory specified must not
-						contain the main configuration file.</p></dd>
+						contain the main configuration file.</p>
+</dd>
 
 
 <dt><code>log_dest</code> <em><code>destinations</code></em></dt>
 <dd>
 
-<p>Send log messages to a particular destination.
-Possible destinations are: <code>stdout</code>
-<code>stderr</code> <code>syslog</code>
-<code>topic</code>.</p>
+Send log messages to a particular destination.
 
-<p><code>stdout</code> and
-<code>stderr</code> log to the console on the
-named output.</p>
+Use multiple log_dest lines for multiple logging destinations.
 
-<p><code>syslog</code> uses the userspace syslog
-facility which usually ends up in /var/log/messages or
-similar and topic logs to the broker topic
-'$SYS/broker/log/&lt;severity&gt;', where severity is
-one of D, E, W, N, I, M which are debug, error,
-warning, notice, information and message. Message type
-severity is used by the subscribe and unsubscribe
-log_type options and publishes log messages at
-$SYS/broker/log/M/subscribe and
-$SYS/broker/log/M/unsubscribe.</p>
+Possible destinations are: 
+- `stdout`
+- `stderr`
+- `syslog`
+- `topic`
+- `file`
 
-<p>The <code>file</code> destination requires an
-						additional parameter which is the file to be logged to,
-						e.g. "log_dest file /var/log/mosquitto.log". The file
-						will be closed and reopened when the broker receives a
-						HUP signal. Only a single file destination may be
-						configured.</p>
+`stdout` and `stderr` log to the console on the named output.
 
-<p>Use "log_dest none" if you wish to disable logging.
-						Defaults to stderr. This option may be specified
-						multiple times.</p>
+`syslog` uses the userspace syslog facility which usually ends up in /var/log/messages or similar.
 
-<p>Note that if the broker is running as a Windows
-						service it will default to "log_dest none" and neither
-						stdout nor stderr logging is available.</p>
+topic logs to the broker topic '$SYS/broker/log/<severity>', where severity is one of D, E, W, N, I, M which are debug, error, warning, notice, information and message. Message type severity is used by the subscribe and unsubscribe log_type options and publishes log messages at $SYS/broker/log/M/subscribe and $SYS/broker/log/M/unsubscribe.
 
-<p>Reloaded on reload signal.</p>
+The `file` destination requires an additional parameter which is the file to be logged to, e.g. "log_dest file /var/log/mosquitto.log". The file will be closed and reopened when the broker receives a HUP signal. Only a single file destination may be configured.
+
+Use "log_dest none" if you wish to disable logging. 
+
+默认值：*`stderr`*
+
+This option may be specified multiple times.
+
+Note that if the broker is running as a Windows service it will default to "log_dest none" and neither stdout nor stderr logging is available.
+
+Reloaded on reload signal.
 
 </dd>
 
@@ -331,28 +324,21 @@ Reloaded on reload signal.
 <dt><code>log_type</code> <em><code>types</code></em></dt>
 <dd>
 
-<p>Choose types of messages to log. Possible types are:
-						<em><code>debug</code></em>,
-						<em><code>error</code></em>,
-						<em><code>warning</code></em>,
-						<em><code>notice</code></em>,
-						<em><code>information</code></em>,
-						<em><code>subscribe</code></em>,
-						<em><code>unsubscribe</code></em>,
-						<em><code>websockets</code></em>,
-						<em><code>none</code></em>,
-						<em><code>all</code></em>.</p>
+Choose types of messages to log. Possible types are:
+- *`debug`*
+- *`error`*
+- *`warning`*
+- *`notice`*
+- *`information`*
+- *`subscribe`*
+- *`unsubscribe`*
+- *`websockets`*
+- *`none`*
+- *`all`*
 
-<p>Defaults to <em><code>error</code></em>,
-						<em><code>warning</code></em>, <em><code>notice
-						</code></em>and
-						<em><code>information</code></em>.  This option
-						may be specified multiple times. Note that the
-						<em><code>debug </code></em>type (used for
-						decoding incoming/outgoing network packets) is never
-						logged in topics.</p>
+Defaults to *`error`*, *`warning`*, *`notice`* and *`information`*.  This option may be specified multiple times. Note that the *`debug`* type (used for decoding incoming/outgoing network packets) is never logged in topics.
 
-<p>Reloaded on reload signal.</p>
+Reloaded on reload signal.
 
 </dd>
 
@@ -810,35 +796,33 @@ Path to the PEM encoded keyfile.
 
 
 <dt><code>require_certificate</code> [ true | false ]</dt>
-<dd><p>By default an SSL/TLS enabled listener will
-							operate in a similar fashion to a https enabled web
-							server, in that the server has a certificate signed
-							by a CA and the client will verify that it is a
-							trusted certificate.  The overall aim is encryption
-							of the network traffic.  By setting
-							<code>require_certificate</code> to
-							<em><code>true</code></em>, the client must
-							provide a valid certificate in order for the
-							network connection to proceed. This allows access
-							to the broker to be controlled outside of the
-							mechanisms provided by MQTT.</p></dd>
+<dd>
+
+By default an SSL/TLS enabled listener will operate in a similar fashion to a https enabled web server, in that the server has a certificate signed by a CA and the client will verify that it is a trusted certificate.
+
+The overall aim is encryption of the network traffic.
+
+By setting `require_certificate` to *`true`*, the client must provide a valid certificate in order for the network connection to proceed. This allows access to the broker to be controlled outside of the mechanisms provided by MQTT.
+
+</dd>
+
+
 <dt><code>tls_version</code> <em><code>version</code></em></dt>
-<dd><p>Configure the version of the TLS protocol to be
-							used for this listener. Possible values are
-							<em><code>tlsv1.2</code></em>,
-							<em><code>tlsv1.1</code></em> and
-							<em><code>tlsv1</code></em>. If left unset,
-							the default of allowing all of TLS v1.2, v1.1 and
-							v1.0 is used.</p></dd>
+<dd>
+
+Configure the version of the TLS protocol to be used for this listener. Possible values are <em><code>tlsv1.2</code></em>, <em><code>tlsv1.1</code></em> and <em><code>tlsv1</code></em>. If left unset, the default of allowing all of TLS v1.2, v1.1 and v1.0 is used.
+
+</dd>
+
+
 <dt><code>use_identity_as_username</code> [ true | false ]</dt>
-<dd><p>If <code>require_certificate</code> is
-							<em><code>true</code></em>, you may set
-							<code>use_identity_as_username</code> to
-							<em><code>true</code></em> to use the CN value
-							from the client certificate as a username. If this
-							is <em><code>true</code></em>, the
-							<code>password_file</code> option will not be
-							used for this listener.</p></dd>
+<dd>
+
+If <code>require_certificate</code> is <em><code>true</code></em>, you may set <code>use_identity_as_username</code> to <em><code>true</code></em> to use the CN value from the client certificate as a username. If this is <em><code>true</code></em>, the <code>password_file</code> option will not be used for this listener.
+
+</dd>
+
+
 </dl></div>
 </div>
 <div class="refsect2">
@@ -854,36 +838,36 @@ Path to the PEM encoded keyfile.
 							use this option.  The list of available ciphers can
 							be optained using the "openssl ciphers" command and
 							should be provided in the same format as the output
-							of that command.</p></dd>
+							of that command.</p>
+</dd>
+
+
 <dt><code>psk_hint</code> <em><code>hint</code></em></dt>
 <dd>
-<p>The <code>psk_hint</code> option enables
-							pre-shared-key support for this listener and also
-							acts as an identifier for this listener. The hint
-							is sent to clients and may be used locally to aid
-							authentication. The hint is a free form string that
-							doesn't have much meaning in itself, so feel free
-							to be creative.</p>
-<p>If this option is provided, see
-							<code>psk_file</code> to define the pre-shared
-							keys to be used or create a security plugin to
-							handle them.</p>
+
+The <code>psk_hint</code> option enables pre-shared-key support for this listener and also acts as an identifier for this listener. The hint is sent to clients and may be used locally to aid authentication. The hint is a free form string that doesn't have much meaning in itself, so feel free to be creative.
+
+If this option is provided, see <code>psk_file</code> to define the pre-shared keys to be used or create a security plugin to handle them.
+
 </dd>
+
+
 <dt><code>tls_version</code> <em><code>version</code></em></dt>
-<dd><p>Configure the version of the TLS protocol to be
-							used for this listener. Possible values are
-							<em><code>tlsv1.2</code></em>,
-							<em><code>tlsv1.1</code></em> and
-							<em><code>tlsv1</code></em>. If left unset,
-							the default of allowing all of TLS v1.2, v1.1 and
-							v1.0 is used.</p></dd>
+<dd>
+
+Configure the version of the TLS protocol to be used for this listener. Possible values are <em><code>tlsv1.2</code></em>, <em><code>tlsv1.1</code></em> and <em><code>tlsv1</code></em>. If left unset, the default of allowing all of TLS v1.2, v1.1 and v1.0 is used.
+
+</dd>
+
+
 <dt><code>use_identity_as_username</code> [ true | false ]</dt>
-<dd><p>Set <code>use_identity_as_username</code> to
-							have the psk identity sent by the client used as
-							its username.  The username will be checked as
-							normal, so <code>password_file</code> or
-							another means of authentication checking must be
-							used. No password will be used.</p></dd>
+<dd>
+
+Set <code>use_identity_as_username</code> to have the psk identity sent by the client used as its username.  The username will be checked as normal, so <code>password_file</code> or another means of authentication checking must be used. No password will be used.
+
+</dd>
+
+
 </dl></div>
 </div>
 </div>
