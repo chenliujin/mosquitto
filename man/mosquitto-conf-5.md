@@ -128,16 +128,20 @@
 						will be freed and reloaded. Existing subscriptions will
 						be affected after the reload.</p>
 </dd>
+
 <dt><span class="term"><code class="option">allow_anonymous</code> [ true | false ]</span></dt>
 <dd>
-<p>Boolean value that determines whether clients that
-						connect without providing a username are allowed to
-						connect. If set to <em class="replaceable"><code>false</code></em>
-						then another means of connection should be created to
-						control authenticated client access.  Defaults to
-						<em class="replaceable"><code>true</code></em>.</p>
-<p>Reloaded on reload signal.</p>
+	<p>Boolean value that determines whether clients that
+	connect without providing a username are allowed to
+	connect. If set to <em class="replaceable"><code>false</code></em>
+	then another means of connection should be created to
+	control authenticated client access.  </p>
+
+	默认值：<em>true</em>
+
+	<p>Reloaded on reload signal.</p>
 </dd>
+
 <dt><span class="term"><code class="option">allow_duplicate_messages</code> [ true | false ]</span></dt>
 <dd>
 <p>If a client is subscribed to multiple subscriptions
