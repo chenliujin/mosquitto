@@ -139,7 +139,7 @@
 
 	默认值：<i>true</i>
 
-	<p>Reloaded on reload signal.</p>
+	Reloaded on reload signal.
 </dd>
 
 <dt><span class="term"><code class="option">allow_duplicate_messages</code> [ true | false ]</span></dt>
