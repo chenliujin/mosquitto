@@ -129,42 +129,37 @@
 						be affected after the reload.</p>
 </dd>
 
+
 <dt><code>allow_anonymous</code> [ true | false ]</dt>
 <dd>
-Boolean value that determines whether clients that
-connect without providing a username are allowed to
-connect. If set to <em><code>false</code></em>
-then another means of connection should be created to
-control authenticated client access.
+
+Boolean value that determines whether clients that connect without providing a username are allowed to connect. 
+
+If set to *`false`* then a password file should be created (see the password_file option) to control authenticated client access. 
 
 默认值：*`true`*
 
 Reloaded on reload signal.
+
 </dd>
+
 
 <dt><code>allow_duplicate_messages</code> [ true | false ]</dt>
 <dd>
-<p>If a client is subscribed to multiple subscriptions
-						that overlap, e.g. foo/# and foo/+/baz , then MQTT
-						expects that when the broker receives a message on a
-						topic that matches both subscriptions, such as
-						foo/bar/baz, then the client should only receive the
-						message once.</p>
-<p>Mosquitto keeps track of which clients a message has
-						been sent to in order to meet this requirement. This
-						option allows this behaviour to be disabled, which may
-						be useful if you have a large number of clients
-						subscribed to the same set of topics and want to
-						minimise memory usage.</p>
-<p>It can be safely set to
-						<em><code>true</code></em> if you know in advance
-						that your clients will never have overlapping
-						subscriptions, otherwise your clients must be able to
-						correctly deal with duplicate messages even when then
-						have QoS=2.</p>
-<p>Defaults to <em><code>true</code></em>.</p>
-<p>Reloaded on reload signal.</p>
+
+如果客户端订阅了多个重叠的订阅，例如 `foo/＃` 和 `foo/+/baz`，则 MQTT 期望当代理收到与两个订阅（如`foo/bar/baz`）匹配的主题的消息时，客户端只能收到一次消息。
+
+Mosquitto 会跟踪哪些客户端已经发送了一个消息，以满足这一要求。如果您有大量客户端订阅同一组主题并希望最小化内存使用时，可以禁用此选项。
+
+如果您事先知道您的客户端将不会拥有重叠的订阅，则可以放心地设置为 *`true`* ，否则即使 QoS = 2，您的客户端也必须能够正确处理重复的消息。
+
+默认值：*`true`*
+
+Reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>auth_opt_*</code> <em><code>value</code></em></dt>
 <dd><p>Options to be passed to the auth plugin. See the
 						specific plugin instructions.  </p></dd>
@@ -199,50 +194,64 @@ Reloaded on reload signal.
 <p>Defaults to <em><code>true</code></em>.</p>
 <p>Not currently reloaded on reload signal.</p>
 </dd>
+
+
 <dt><code>autosave_interval</code> <em><code>seconds</code></em></dt>
 <dd>
-<p>The number of seconds that mosquitto will wait
-						between each time it saves the in-memory database to
-						disk. If set to 0, the in-memory database will only be
-						saved when mosquitto exits or when receiving the
-						SIGUSR1 signal. Note that this setting only has an
-						effect if persistence is enabled.  Defaults to 1800
-						seconds (30 minutes).</p>
-<p>Reloaded on reload signal.</p>
+
+启用持久化后，mosquitto 每间隔 autosave_interval 秒会将内存中的数据保存到磁盘。
+
+如果设置为 0，则只有当 mosquitto 退出或接收到 SIGUSR1 信号时，内存中的数据库才会被保存。
+
+默认值：*`1800`* seconds (30 minutes)
+
+Reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>autosave_on_changes</code> [ true | false ]</dt>
 <dd>
-<p>If <em><code>true</code></em>, mosquitto will
-						count the number of subscription changes, retained
-						messages received and queued messages and if the total
-						exceeds <code>autosave_interval</code> then the
-						in-memory database will be saved to disk. If
-						<em><code>false</code></em>, mosquitto will save
-						the in-memory database to disk by treating
-						<code>autosave_interval</code> as a time in
-						seconds.</p>
-<p>Reloaded on reload signal.</p>
+
+If *`true`*, mosquitto will count the number of subscription changes, retained
+messages received and queued messages and if the total exceeds `autosave_interval` then the in-memory database will be saved to disk.
+
+If *`false`*, mosquitto will save the in-memory database to disk by treating *`autosave_interval`* as a time in seconds.
+
+Reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>clientid_prefixes</code> <em><code>prefix</code></em></dt>
 <dd>
-<p>If defined, only clients that have a clientid with a
-						prefix that matches clientid_prefixes will be allowed
-						to connect to the broker. For example, setting
-						"secure-" here would mean a client "secure-client"
-						could connect but another with clientid "mqtt"
-						couldn't. By default, all client ids are valid.</p>
-<p>Reloaded on reload signal. Note that currently
-						connected clients will be unaffected by any
-						changes.</p>
+
+If defined, only clients that have a clientid with a
+prefix that matches clientid_prefixes will be allowed
+to connect to the broker. For example, setting
+"secure-" here would mean a client "secure-client"
+could connect but another with clientid "mqtt"
+couldn't. By default, all client ids are valid.
+
+Reloaded on reload signal. Note that currently
+connected clients will be unaffected by any
+changes.
+
 </dd>
+
+
 <dt><code>connection_messages</code> [ true | false ]</dt>
 <dd>
-<p>If set to <em><code>true</code></em>, the log
-						will include entries when clients connect and
-						disconnect. If set to <em><code>false</code></em>,
-						these entries will not appear.</p>
-<p>Reloaded on reload signal.</p>
+
+If set to *`true`*, the log will include entries when clients connect and disconnect. 
+
+If set to *`false`*, these entries will not appear.
+
+Reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>include_dir</code> <em><code>dir</code></em></dt>
 <dd><p>External configuration files may be included by using
 						the include_dir option. This defines a directory that
@@ -252,56 +261,76 @@ Reloaded on reload signal.
 						file. This option will only be processed from the main
 						configuration file. The directory specified must not
 						contain the main configuration file.</p></dd>
+
+
 <dt><code>log_dest</code> <em><code>destinations</code></em></dt>
 <dd>
+
 <p>Send log messages to a particular destination.
-						Possible destinations are: <code>stdout</code>
-						<code>stderr</code> <code>syslog</code>
-						<code>topic</code>.</p>
+Possible destinations are: <code>stdout</code>
+<code>stderr</code> <code>syslog</code>
+<code>topic</code>.</p>
+
 <p><code>stdout</code> and
-						<code>stderr</code> log to the console on the
-						named output.</p>
+<code>stderr</code> log to the console on the
+named output.</p>
+
 <p><code>syslog</code> uses the userspace syslog
-						facility which usually ends up in /var/log/messages or
-						similar and topic logs to the broker topic
-						'$SYS/broker/log/&lt;severity&gt;', where severity is
-						one of D, E, W, N, I, M which are debug, error,
-						warning, notice, information and message. Message type
-						severity is used by the subscribe and unsubscribe
-						log_type options and publishes log messages at
-						$SYS/broker/log/M/subscribe and
-						$SYS/broker/log/M/unsubscribe.</p>
+facility which usually ends up in /var/log/messages or
+similar and topic logs to the broker topic
+'$SYS/broker/log/&lt;severity&gt;', where severity is
+one of D, E, W, N, I, M which are debug, error,
+warning, notice, information and message. Message type
+severity is used by the subscribe and unsubscribe
+log_type options and publishes log messages at
+$SYS/broker/log/M/subscribe and
+$SYS/broker/log/M/unsubscribe.</p>
+
 <p>The <code>file</code> destination requires an
 						additional parameter which is the file to be logged to,
 						e.g. "log_dest file /var/log/mosquitto.log". The file
 						will be closed and reopened when the broker receives a
 						HUP signal. Only a single file destination may be
 						configured.</p>
+
 <p>Use "log_dest none" if you wish to disable logging.
 						Defaults to stderr. This option may be specified
 						multiple times.</p>
+
 <p>Note that if the broker is running as a Windows
 						service it will default to "log_dest none" and neither
 						stdout nor stderr logging is available.</p>
+
 <p>Reloaded on reload signal.</p>
+
 </dd>
+
+
 <dt><code>log_facility</code> <em><code>local facility</code></em></dt>
 <dd><p>If using syslog logging (not on Windows), messages
 						will be logged to the "daemon" facility by default. Use
 						the <code>log_facility</code> option to choose
 						which of local0 to local7 to log to instead. The option
 						value should be an integer value, e.g. "log_facility 5"
-						to use local5.</p></dd>
+to use local5.</p>
+</dd>
+
+
 <dt><code>log_timestamp</code> [ true | false ]</dt>
 <dd>
-<p>Boolean value, if set to
-						<em><code>true</code></em> a timestamp value will
-						be added to each log entry. The default is
-						<em><code>true</code></em>.</p>
-<p>Reloaded on reload signal.</p>
+
+Boolean value, if set to *`true`* a timestamp value will be added to each log entry. 
+
+默认值：*`true`*
+
+Reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>log_type</code> <em><code>types</code></em></dt>
 <dd>
+
 <p>Choose types of messages to log. Possible types are:
 						<em><code>debug</code></em>,
 						<em><code>error</code></em>,
@@ -313,6 +342,7 @@ Reloaded on reload signal.
 						<em><code>websockets</code></em>,
 						<em><code>none</code></em>,
 						<em><code>all</code></em>.</p>
+
 <p>Defaults to <em><code>error</code></em>,
 						<em><code>warning</code></em>, <em><code>notice
 						</code></em>and
@@ -321,7 +351,9 @@ Reloaded on reload signal.
 						<em><code>debug </code></em>type (used for
 						decoding incoming/outgoing network packets) is never
 						logged in topics.</p>
+
 <p>Reloaded on reload signal.</p>
+
 </dd>
 
 <dt><code>max_inflight_messages</code> <em><code>count</code></em></dt>
@@ -354,72 +386,76 @@ Reloaded on reload signal.
 
 
 <dt><code>message_size_limit</code> <em><code>limit</code></em></dt>
-<dd><p>This option sets the maximum publish payload size
-						that the broker will allow. Received messages that
-						exceed this size will not be accepted by the broker.
-						The default value is 0, which means that all valid MQTT
-						messages are accepted. MQTT imposes a maximum payload
-						size of 268435455 bytes.</p></dd>
+<dd>
+
+This option sets the maximum publish payload size
+that the broker will allow. Received messages that
+exceed this size will not be accepted by the broker.
+
+The default value is 0, which means that all valid MQTT messages are accepted. 
+
+MQTT imposes a maximum payload size of 268435455 bytes.
+
+</dd>
+
+
 <dt><code>password_file</code> <em><code>file path</code></em></dt>
 <dd>
-<p>Set the path to a password file. If defined, the
-						contents of the file are used to control client access
-						to the broker. The file can be created using the
-						mosquitto_passwd(1)
-						utility. If mosquitto is compiled without TLS support
-						(it is recommended that TLS support is included), then
-						the password file should be a text file with each line
-						in the format "username:password", where the colon and
-						password are optional but recommended. If
-						<code>allow_anonymous</code> is set to
-						<em><code>false</code></em>, only users defined in
-						this file will be able to connect. Setting
-						<code>allow_anonymous</code> to
-						<em><code>true</code></em> when
-						<em><code>password_file</code></em>is defined is
-						valid and could be used with acl_file to have e.g. read
-						only guest/anonymous accounts and defined users that
-						can publish.</p>
-<p>Reloaded on reload signal. The currently loaded
-						username and password data will be freed and reloaded.
-						Clients that are already connected will not be
-						affected.</p>
-<p>See also
-						mosquitto_passwd(1).</p>
+
+Set the path to a password file. 
+
+If defined, the contents of the file are used to control client access to the broker. The file can be created using the mosquitto_passwd(1) utility. 
+
+If mosquitto is compiled without TLS support (it is recommended that TLS support is included), then the password file should be a text file with each line in the format "username:password", where the colon and password are optional but recommended. 
+
+如果 `allow_anonymous` 设置为 *`false`*，只有在此文件中定义的用户才允许连接。
+
+如果 `allow_anonymous` 设置为 *`true`* 并且 *`password_file`* 定义了用户，可以与 `acl_file` 一起使用达到比如 guest/anonymous read only 而定义了的用户才可以 publish 的效果.
+
+Reloaded on reload signal. The currently loaded username and password data will be freed and reloaded. Clients that are already connected will not be affected.
+
+See also mosquitto_passwd(1).
+
 </dd>
+
+
 <dt><code>persistence</code> [ true | false ]</dt>
 <dd>
-<p>If <em><code>true</code></em>, connection,
-						subscription and message data will be written to the
-						disk in mosquitto.db at the location dictated by
-						persistence_location. When mosquitto is restarted, it
-						will reload the information stored in mosquitto.db. The
-						data will be written to disk when mosquitto closes and
-						also at periodic intervals as defined by
-						autosave_interval. Writing of the persistence database
-						may also be forced by sending mosquitto the SIGUSR1
-						signal. If <em><code>false</code></em>, the data
-						will be stored in memory only. Defaults to
-						<em><code>false</code></em>.</p>
-<p>Reloaded on reload signal.</p>
+
+If *`true`*, connection, subscription and message data will be written to the disk in mosquitto.db at the location dictated by persistence_location. When mosquitto is restarted, it will reload the information stored in mosquitto.db. The data will be written to disk when mosquitto closes and also at periodic intervals as defined by autosave_interval. Writing of the persistence database may also be forced by sending mosquitto the SIGUSR1 signal. 
+
+If *`false`*, the data will be stored in memory only. 
+
+默认值：*`false`*
+
+Reloaded on reload signal.
+
 </dd>
+
 
 <dt><code>persistence_file</code> <em><code>file name</code></em></dt>
 <dd>
-The filename to use for the persistent database.
-Defaults to mosquitto.db.
+
+The filename to use for the persistent database, not including the path.
+
+默认值：*`mosquitto.db`*
 
 Reloaded on reload signal.
+
 </dd>
+
 
 <dt><code>persistence_location</code> <em><code>path</code></em></dt>
 <dd>
-The path where the persistence database should be
-stored. Must end in a trailing slash. If not given,
-then the current directory is used.
+
+Location for persistent database. Must end in a trailing / ( e.g. /var/lib/mosquitto/ ). 
+
+Default is an empty string (current directory).
 
 Reloaded on reload signal.
+
 </dd>
+
 
 <dt><code>persistent_client_expiration</code> <em><code>duration</code></em></dt>
 <dd>
@@ -444,6 +480,7 @@ This is a non-standard option in MQTT V3.1 but allowed in MQTT v3.1.1.
 Reloaded on reload signal.
 </dd>
 
+
 <dt><code>pid_file</code> <em><code>file path</code></em></dt>
 <dd>
 <p>Write a pid file to the file specified. If not given
@@ -457,6 +494,8 @@ Reloaded on reload signal.
 						/var/run/mosquitto.pid</p>
 <p>Not reloaded on reload signal.</p>
 </dd>
+
+
 <dt><code>psk_file</code> <em><code>file path</code></em></dt>
 <dd>
 <p>Set the path to a pre-shared-key file. This option
@@ -478,16 +517,15 @@ Reloaded on reload signal.
 <dt><code>queue_qos0_messages</code> [ true | false ]</dt>
 <dd>
 
-Set to <em><code>true</code></em> to queue
-messages with QoS 0 when a persistent client is
-disconnected. These messages are included in the limit
-imposed by max_queued_messages.  
+如果设置为 *`true`*，持久客户端断开连接时会将 QoS 0 消息一起进行排队。消息的数量受 max_queued_messages 限制。
 
 默认值：*`false`*
 
 Note that the MQTT v3.1 spec states that only QoS 1
 and 2 messages should be saved in this situation so
 this is a non-standard option.
+
+This is a non-standard option for the MQTT v3.1 spec but is allowed in v3.1.1.
 
 Reloaded on reload signal.
 
