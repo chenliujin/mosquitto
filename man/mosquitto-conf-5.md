@@ -428,8 +428,7 @@ respectively. For example:
 - persistent_client_expiration 14d
 - persistent_client_expiration 1y
 
-As this is a non-standard option, the default if not
-set is to never expire persistent clients.
+非标准选项，默认（如果未设置）是永不过期的持久性客户端。
 
 Reloaded on reload signal.
 </dd>
