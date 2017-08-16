@@ -482,11 +482,7 @@ Reloaded on reload signal.
 <p>Reloaded on reload signal.</p>
 </dd>
 
-<dt>
-
-### `retry_interval` *`seconds`*
-
-</dt>
+<dt>`retry_interval` *`seconds`*</dt>
 <dd>
 
 在发送 QoS=1 或 QoS=2 的消息后等待多长时间没有收到确认，mosquitto 将重新发送此消息。
