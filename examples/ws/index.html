@@ -5,8 +5,13 @@
 <body>
 <script src="./browserMqtt.js"></script>
 <script>
-  var client = mqtt.connect({protocol: 'ws', host:'127.0.0.1', port:'9001'}) // you add a ws:// url here
+  // websockets + 匿名用户 
+  var client = mqtt.connect({protocol: 'ws', host:'127.0.0.1', port:'9001'}) 
+
+  // websockets + user 
   //var client = mqtt.connect({protocol: 'ws', host:'127.0.0.1', port:'9001', username: 'appuser', password: '123456'})
+
+  // websockets tls + user 
   //var client = mqtt.connect({protocol: 'wss', host:'mqtt.chenliujin.com', port:'9002', username: 'appuser', password: '123456'})
 
   client.subscribe("mqtt/demo")
