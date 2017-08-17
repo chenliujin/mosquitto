@@ -1,0 +1,7 @@
+topic readwrite #
+
+user app
+topic read #
+
+user appuser
+topic readwrite #
