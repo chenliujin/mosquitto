@@ -1,4 +1,4 @@
-topic readwrite #
+topic read guest/#
 
 user app
 topic read #
