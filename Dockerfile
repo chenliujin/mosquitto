@@ -15,7 +15,7 @@ ENV MOSQUITTO_VERSION=v1.4.14
 
 RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-devel libuuid-devel libxslt docbook-style-xsl'; \
     mkdir -p /var/lib/mosquitto && \
-    chown mosquitto:mosquitto -R /var/lib/mosquitto \
+    chown -R mosquitto:mosquitto /var/lib/mosquitto && \
     yum update -y && \
     yum install -y epel-release && \
     yum install -y $buildDeps libwebsockets libuuid c-ares openssl && \
