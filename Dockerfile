@@ -34,9 +34,9 @@ COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitt
 
 RUN systemctl enable mosquitto
 
-EXPOSE 1883 8883 9001 9002
-
 VOLUME ["/var/lib/mosquitto", "/etc/mosquitto"]
+
+EXPOSE 1883 8883 9001 9002
 
 CMD ["/usr/sbin/init"]
 
