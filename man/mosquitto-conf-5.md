@@ -81,52 +81,65 @@
 <div class="refsect1">
 <a name="idm45942561611920"></a><h2>General Options</h2>
 <div class="variablelist"><dl class="variablelist">
-<dt><code>acl_file</code> <em><code>file path</code></em></dt>
+
+
+<dt>
+<code>acl_file</code> 
+<em><code>file path</code></em>
+</dt>
 <dd>
-<p>Set the path to an access control list file. If
-						defined, the contents of the file are used to control
-						client access to topics on the broker.</p>
-<p>If this parameter is defined then only the topics
-						listed will have access. Topic access is added with
-						lines of the format:</p>
-<p><code class="code">topic [read|write|readwrite] &lt;topic&gt;</code></p>
-<p>The access type is controlled using "read", "write" or
-						"readwrite". This parameter is optional (unless
-						&lt;topic&gt; includes a space character) - if not
-						given then the access is read/write.  &lt;topic&gt; can
-						contain the + or # wildcards as in
-						subscriptions.</p>
-<p>The first set of topics are applied to anonymous
-						clients, assuming <code>allow_anonymous</code> is
-						true. User specific topic ACLs are added after a user
-						line as follows:</p>
-<p><code class="code">user &lt;username&gt;</code></p>
-<p>The username referred to here is the same as in
-						<code>password_fil</code>e. It is not the
-						clientid.</p>
-<p>It is also possible to define ACLs based on pattern
-						substitution within the topic. The form is the same as
-						for the topic keyword, but using pattern as the
-						keyword.</p>
-<p><code class="code">pattern [read|write|readwrite] &lt;topic&gt;</code></p>
-<p>The patterns available for substition are:</p>
-<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; ">
-<li class="listitem" style="list-style-type: circle"><p>%c to match the client id of the client</p></li>
-<li class="listitem" style="list-style-type: circle"><p>%u to match the username of the client</p></li>
-</ul></div>
-<p>The substitution pattern must be the only text for
-						that level of hierarchy. Pattern ACLs apply to all
-						users even if the "user" keyword has previously been
-						given.</p>
-<p>Example:</p>
-<p><code class="code">pattern write sensor/%u/data</code></p>
-<p>Allow access for bridge connection messages:</p>
-<p><code class="code">pattern write $SYS/broker/connection/%c/state</code></p>
-<p>If the first character of a line of the ACL file is a
-						# it is treated as a comment.</p>
-<p>Reloaded on reload signal. The currently loaded ACLs
-						will be freed and reloaded. Existing subscriptions will
-						be affected after the reload.</p>
+
+Set the path to an access control list file. If defined, the contents of the file are used to control client access to topics on the broker.
+
+If this parameter is defined then only the topics listed will have access. 
+
+Topic access is added with lines of the format:
+
+```
+topic [read|write|readwrite] <topic>
+```
+
+The access type is controlled using "read", "write" or "readwrite". This parameter is optional (unless <topic> includes a space character) - if not given then the access is read/write.  <topic> can contain the + or # wildcards as in subscriptions.
+
+The first set of topics are applied to anonymous clients, assuming `allow_anonymous` is true. 
+
+User specific topic ACLs are added after a user line as follows:
+
+```
+user <username>
+```
+
+The username referred to here is the same as in `password_file`. It is not the clientid.
+
+It is also possible to define ACLs based on pattern substitution within the topic. The form is the same as for the topic keyword, but using pattern as the keyword.
+
+```
+pattern [read|write|readwrite] <topic>
+```
+
+The patterns available for substition are:
+
+- %c to match the client id of the client
+- %u to match the username of the client
+
+The substitution pattern must be the only text for that level of hierarchy. Pattern ACLs apply to all users even if the "user" keyword has previously been given.
+
+Example:
+
+```
+pattern write sensor/%u/data
+```
+
+Allow access for bridge connection messages:
+
+```
+pattern write $SYS/broker/connection/%c/state
+```
+
+If the first character of a line of the ACL file is a # it is treated as a comment.
+
+Reloaded on reload signal. The currently loaded ACLs will be freed and reloaded. Existing subscriptions will be affected after the reload.
+
 </dd>
 
 
