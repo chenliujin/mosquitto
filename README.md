@@ -85,7 +85,10 @@ protocol websockets
 
 ## 生成密码
 ```
-$ mosquitto_passwd -c /etc/mosquitto/mosquitto.passwd {username}
+$ mosquitto_passwd -c /etc/mosquitto/mosquitto.passwd admin 
+
+# 添加用户
+$ mosquitto_passwd /etc/mosquitto/mosquitto.passwd Tom 
 ```
 
 ## conf
