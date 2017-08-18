@@ -387,9 +387,7 @@ Reloaded on reload signal.
 <dt><code>message_size_limit</code> <em><code>limit</code></em></dt>
 <dd>
 
-This option sets the maximum publish payload size
-that the broker will allow. Received messages that
-exceed this size will not be accepted by the broker.
+This option sets the maximum publish payload size that the broker will allow. Received messages that exceed this size will not be accepted by the broker.
 
 The default value is 0, which means that all valid MQTT messages are accepted. 
 
