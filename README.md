@@ -70,6 +70,8 @@ persisitent_client_expiration 1d
 
 # 开启 websocket
 
+- 未配置 ssl 的 websocket 连接时必须使用 IP 地址，不能使用域名
+
 ## 编译时
 make WITH_WEBSOCKETS=yes
 
