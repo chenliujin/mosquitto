@@ -37,8 +37,8 @@ spec:
           tcpSocket:
             port: 1883
           initialDelaySeconds: 10
-          periodSeconds: 2
-          failureThreshold: 1
+          #periodSeconds: 2
+          #failureThreshold: 1
       imagePullSecrets:
         - name: docker.io 
       #volumes:
