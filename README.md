@@ -155,6 +155,7 @@ password_file 	mosquitto.passwd
 
 Result : broker=tcp://192.168.0.102:31883, clients=1000, totalCount=100000, duration=7878ms, throughput=12693.58messages/sec
 ```
+- client 数量最大到 5000，到 6000 时测试脚本卡住，需要换其它的压力测试工具测试。
 
 
 # 参考文献
