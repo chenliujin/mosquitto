@@ -17,10 +17,10 @@ spec:
       - name: mosquitto
         image: docker.io/mosquitto:1.4.14
         imagePullPolicy: Always
-        #resources:
-        #  limits:
-        #    cpu: 0.5
-        #    memory: 500Mi
+        resources:
+          limits:
+            cpu: 0.1
+            memory: 100Mi
         #volumeMounts:
         #- name: mosquitto
         #  mountPath: /etc/mosquitto
