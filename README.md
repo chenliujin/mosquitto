@@ -144,6 +144,14 @@ password_file 	mosquitto.passwd
 ```
 ```
 
+# 监控
+
+```
+mosquitto_sub -v -t \$SYS/#
+
+mosquitto_sub -v -t '$SYS/broker/clients/active'
+```
+
 
 # 性能测试
 
