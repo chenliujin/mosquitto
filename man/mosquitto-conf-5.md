@@ -683,67 +683,60 @@ Not reloaded on reload signal.
 
 <dt><code>mount_point</code> <em><code>topic prefix</code></em></dt>
 <dd>
-<p>This option is used with the listener option to
-							isolate groups of clients. When a client connects
-							to a listener which uses this option, the string
-							argument is attached to the start of all topics for
-							this client. This prefix is removed when any
-							messages are sent to the client.  This means a
-							client connected to a listener with mount point
-							<em><code>example</code></em> can only see
-							messages that are published in the topic hierarchy
-							<em><code>example</code></em> and above.</p>
-<p>Not reloaded on reload signal.</p>
+
+This option is used with the listener option to isolate groups of clients. When a client connects to a listener which uses this option, the string argument is attached to the start of all topics for this client. This prefix is removed when any messages are sent to the client.  This means a client connected to a listener with mount point <em><code>example</code></em> can only see messages that are published in the topic hierarchy <em><code>example</code></em> and above.
+
+Not reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>port</code> <em><code>port number</code></em></dt>
 <dd>
-<p>Set the network port for the default listener to
-							listen on. Defaults to 1883.</p>
-<p>Not reloaded on reload signal.</p>
+
+Set the network port for the default listener to listen on. Defaults to 1883.
+
+Not reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>protocol</code> <em><code>value</code></em></dt>
 <dd>
-<p>Set the protocol to accept for this listener. Can
-							be <code>mqtt</code>, the default, or
-							<code>websockets</code> if available.</p>
-<p>Websockets support is currently disabled by
-							default at compile time. Certificate based TLS may be used
-							with websockets, except that only the
-							<code>cafile</code>, <code>certfile</code>,
-							<code>keyfile</code> and
-							<code>ciphers</code> options are
-							supported.</p>
-<p>Not reloaded on reload signal.</p>
+
+Set the protocol to accept for this listener. Can be <code>mqtt</code>, the default, or <code>websockets</code> if available.
+
+Websockets support is currently disabled by default at compile time. Certificate based TLS may be used with websockets, except that only the <code>cafile</code>, <code>certfile</code>, <code>keyfile</code> and <code>ciphers</code> options are supported.
+
+Not reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>use_username_as_clientid</code> [ true | false ]</dt>
 <dd>
-<p>Set <code>use_username_as_clientid</code> to
-							true to replace the clientid that a client
-							connected with with its username. This allows
-							authentication to be tied to the clientid, which
-							means that it is possible to prevent one client
-							disconnecting another by using the same
-							clientid. Defaults to false.</p>
-<p>If a client connects with no username it will be
-							disconnected as not authorised when this option is
-							set to true. Do not use in conjunction with
-							<code>clientid_prefixes</code>.</p>
-<p>See also
-							<code>use_identity_as_username</code>.</p>
-<p>Not reloaded on reload signal.</p>
+
+Set <code>use_username_as_clientid</code> to true to replace the clientid that a client connected with with its username. This allows authentication to be tied to the clientid, which means that it is possible to prevent one client disconnecting another by using the same clientid. Defaults to false.
+
+If a client connects with no username it will be disconnected as not authorised when this option is set to true. Do not use in conjunction with <code>clientid_prefixes</code>.
+
+See also <code>use_identity_as_username</code>.
+
+Not reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>websockets_log_level</code> <em><code>level</code></em></dt>
 <dd>
-<p>Change the websockets logging level. This is a
-							global option, it is not possible to set per
-							listener. This is an integer that is interpreted by
-							libwebsockets as a bit mask for its lws_log_levels
-							enum. See the libwebsockets documentation for more
-							details.</p>
-<p>To use this option, <code>log_type
-								websockets</code> must also be enabled.
-							Defaults to 0.</p>
+
+Change the websockets logging level. This is a global option, it is not possible to set per listener. This is an integer that is interpreted by libwebsockets as a bit mask for its lws_log_levels enum. See the libwebsockets documentation for more details.
+
+To use this option, <code>log_type websockets</code> must also be enabled. Defaults to 0.
+
 </dd>
+
+
 </dl></div>
 </div>
 <div class="refsect2">
