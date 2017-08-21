@@ -145,6 +145,17 @@ password_file 	mosquitto.passwd
 ```
 
 
+# 性能测试
+
+## 吞吐率
+- 测试工具：[takanorig/mqtt-bench](https://github.com/takanorig/mqtt-bench)
+- 测试：
+```
+./mqtt-bench -action=p -broker="tcp://192.168.0.102:31883" -clients=1000 -count=100 -broker-username='appuser' -broker-password='2017@sz'
+
+Result : broker=tcp://192.168.0.102:31883, clients=1000, totalCount=100000, duration=7878ms, throughput=12693.58messages/sec
+```
+
 
 # 参考文献
 - [官网](http://mosquitto.org/)
