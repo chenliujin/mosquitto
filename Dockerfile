@@ -10,8 +10,8 @@ RUN adduser mosquitto
 ENV MOSQUITTO_VERSION=v1.4.14
 
 RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-devel libuuid-devel libxslt docbook-style-xsl'; \
-    mkdir -p /var/lib/mosquitto && \
-    chown -R mosquitto:mosquitto /var/lib/mosquitto/ && \
+    mkdir -p /var/lib/mosquitto && chown -R mosquitto:mosquitto /var/lib/mosquitto/ && \
+    mkdir -p /var/log/mosquitto && chown -R mosquitto:mosquitto /var/log/mosquitto/ && \
     yum update -y && \
     yum install -y epel-release && \
     yum install -y $buildDeps libwebsockets libuuid c-ares openssl && \
@@ -35,7 +35,7 @@ COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitt
 
 RUN systemctl enable mosquitto
 
-VOLUME ["/var/lib/mosquitto", "/etc/mosquitto"]
+VOLUME ["/var/lib/mosquitto", "/etc/mosquitto", "/var/log/mosquitto"]
 
 EXPOSE 1883 8883 9001 9002
 
