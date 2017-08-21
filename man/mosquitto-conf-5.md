@@ -673,14 +673,14 @@ Not reloaded on reload signal.
 
 <dt><code>max_connections</code> <em><code>count</code></em></dt>
 <dd>
-<p>Limit the total number of clients connected for
-							the current listener. Set to <code class="literal">-1</code>
-							to have "unlimited" connections. Note that other
-							limits may be imposed that are outside the control
-							of mosquitto.  See e.g.
-							limits.conf(5).</p>
-<p>Not reloaded on reload signal.</p>
+
+Limit the total number of clients connected for the current listener. Set to *`-1`* to have "unlimited" connections. Note that other limits may be imposed that are outside the control of mosquitto.  See e.g.  limits.conf(5).
+
+Not reloaded on reload signal.
+
 </dd>
+
+
 <dt><code>mount_point</code> <em><code>topic prefix</code></em></dt>
 <dd>
 <p>This option is used with the listener option to
