@@ -138,6 +138,7 @@ password_file 	mosquitto.passwd
 
 ## Chrome 客户端插件
 - MQTTlens
+- MQTTBox
 
 # Test
 
