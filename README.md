@@ -113,6 +113,7 @@ password_file 	mosquitto.passwd
 
 # Go
 - https://eclipse.org/paho/clients/golang/
+- https://www.hivemq.com/blog/mqtt-client-library-encyclopedia-golang
 
 # Node
 - https://www.npmjs.com/package/mqtt
