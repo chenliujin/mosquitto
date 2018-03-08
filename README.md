@@ -118,6 +118,7 @@ password_file 	mosquitto.passwd
 # Node
 - https://www.npmjs.com/package/mqtt
 - https://github.com/mqttjs/MQTT.js
+- https://www.hivemq.com/blog/mqtt-client-library-mqtt-js
 
 # h5
 - http://jpmens.net/2014/07/03/the-mosquitto-mqtt-broker-gets-websockets-support/
