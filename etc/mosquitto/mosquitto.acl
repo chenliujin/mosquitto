@@ -1,8 +1,8 @@
 topic read guest/#
 
 user app
-topic read $SYS/#
 topic read mdc/parkingmeter/#
 
 user appuser
+topic read $SYS/#
 topic readwrite mdc/parkingmeter/#
