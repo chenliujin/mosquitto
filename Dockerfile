@@ -25,13 +25,14 @@ RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-dev
     yum erase -y epel-release $buildDeps && \
     yum clean all; 
 
-COPY /etc/mosquitto				/etc/mosquitto
+COPY /etc/mosquitto		/etc/mosquitto
+COPY /etc/systemd			/etc/systemd
 #COPY /etc/mosquitto/mosquitto.conf		/etc/mosquitto/mosquitto.conf
 #COPY /etc/mosquitto/mosquitto.passwd		/etc/mosquitto/mosquitto.passwd
 #COPY /etc/mosquitto/mosquitto.acl		/etc/mosquitto/mosquitto.acl
 #COPY /etc/mosquitto/ssl/server.crt		/etc/mosquitto/ssl/server.crt
 #COPY /etc/mosquitto/ssl/server.key		/etc/mosquitto/ssl/server.key
-COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitto.service
+#COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitto.service
 
 RUN systemctl enable mosquitto
 
