@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:7.4.1708-beta.4
 
 MAINTAINER chenliujin <liujin.chen@qq.com>
 
@@ -19,7 +19,7 @@ RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-dev
     cd mosquitto && \
     git checkout ${MOSQUITTO_VERSION} -b ${MOSQUITTO_VERSION} && \
     sed -i "s@/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl@/usr/share/sgml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl@" man/manpage.xsl && \
-    make WITH_WEBSOCKETS=yes && \
+    make WITH_WEBSOCKETS=yes WITH_PERSISTENCE=yes && \
     make install && \
     cd / && rm -rf mosquitto && \
     yum erase -y epel-release $buildDeps && \
@@ -40,10 +40,6 @@ VOLUME ["/var/lib/mosquitto", "/etc/mosquitto", "/var/log/mosquitto"]
 
 EXPOSE 1883 8883 9001 9002
 
-CMD ["/usr/sbin/init"]
-
-#RUN exit;
-#
 #RUN addgroup -S mosquitto && \
 #    adduser -S -H -h /var/empty -s /sbin/nologin -D -G mosquitto mosquitto
 #
