@@ -32,7 +32,6 @@ COPY ./etc/systemd			/etc/systemd
 #COPY /etc/mosquitto/mosquitto.acl		/etc/mosquitto/mosquitto.acl
 #COPY /etc/mosquitto/ssl/server.crt		/etc/mosquitto/ssl/server.crt
 #COPY /etc/mosquitto/ssl/server.key		/etc/mosquitto/ssl/server.key
-#COPY /usr/lib/systemd/system/mosquitto.service 	/usr/lib/systemd/system/mosquitto.service
 
 RUN systemctl enable mosquitto
 
