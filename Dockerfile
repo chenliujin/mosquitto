@@ -2,12 +2,9 @@ FROM centos:7.4.1708-beta.4
 
 MAINTAINER chenliujin <liujin.chen@qq.com>
 
-# 1.修改时区
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
- 
-RUN adduser mosquitto
-
 ENV MOSQUITTO_VERSION=v1.4.14
+
+RUN adduser mosquitto
 
 RUN buildDeps='git make gcc gcc-c++ openssl-devel c-ares-devel libwebsockets-devel libuuid-devel libxslt docbook-style-xsl'; \
     mkdir -p /var/lib/mosquitto && chown -R mosquitto:mosquitto /var/lib/mosquitto/ && \
