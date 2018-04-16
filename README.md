@@ -9,9 +9,10 @@ yum install -y mosquitto mosquitto-clients
 ---
 
 # TLS
+- [mosquitto-tls](https://mosquitto.org/man/mosquitto-tls-7.html)
+
 
 ## 第三方签名证书
-
 ```
 listener 8883
 #cafile 	// 第三方签名，浏览器可以识别，此处不用填
@@ -22,25 +23,42 @@ keyfile 	/etc/mosquitto/ssl/mqtt.chenliujin.com.key
 
 
 ## 自签名证书
-- https://github.com/owntracks/tools/blob/master/TLS/generate-CA.sh
 
+### Certificate Authority 
 ```
-# Certificate Authority 
 openssl req -new -x509 -days <duration> -extensions v3_ca -keyout ca.key -out ca.crt
+```
 
-# Server
+### Server
 ## Generate a server key without encryption.
+```
 openssl genrsa -out server.key 2048
+```
 
 ## Generate a certificate signing request to send to the CA.
+```
 openssl req -out server.csr -key server.key -new
+```
 
 ## Send the CSR to the CA, or sign it with your CA key:
+```
 openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days <duration>
+```
 
 # Client
-mosquitto_pub -h mqtt.66park.net -p 1883 -t chen --cafile ./ca.crt -m "test" -u admin -P "1q2w3e"
 ```
+openssl genrsa -out client.key 2048
+openssl req -out client.csr -key client.key -new
+openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt -days <duration>
+```
+
+# Client Message
+```
+mosquitto_pub -h mqtt.example.com -p 8883 --cafile ./ca.crt --cert ./client.crt --key ./client.key -t topic -m "test" -u admin -P 123456
+```
+
+## 自签名证书脚本
+- https://github.com/owntracks/tools/blob/master/TLS/generate-CA.sh
 
 ## conf
 ```
