@@ -46,6 +46,6 @@ spec:
         hostPath:
           path: /data/mosquitto
       nodeSelector: 
-        node: k2 
+        node: mqtt 
 
 
