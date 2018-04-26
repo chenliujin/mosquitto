@@ -1,3 +1,15 @@
+# TLS
+- [mosquitto-tls](https://mosquitto.org/man/mosquitto-tls-7.html)
+- https://zhuanlan.zhihu.com/p/21421094
+
+---
+
+
+
+
+
+
+
 # Yum
 
 ```
@@ -5,12 +17,6 @@ curl http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7
 
 yum install -y mosquitto mosquitto-clients
 ```
-
----
-
-# TLS
-- [mosquitto-tls](https://mosquitto.org/man/mosquitto-tls-7.html)
-
 
 ## 第三方签名证书
 ```
@@ -38,6 +44,14 @@ openssl genrsa -out server.key 2048
 ## Generate a certificate signing request to send to the CA.
 ```
 openssl req -out server.csr -key server.key -new
+
+Country Name (2 letter code) [XX]:CN
+State or Province Name (full name) []:GD
+Locality Name (eg, city) [Default City]:SZ
+Organization Name (eg, company) [Default Company Ltd]:MQTT SERVER 
+Organizational Unit Name (eg, section) []:MQTT SERVER
+Common Name (eg, your name or your server's hostname) []:127.0.0.1 #此处用服务器的IP或域名，否则会出错
+Email Address []:liujin.chen@qq.com
 ```
 
 ## Send the CSR to the CA, or sign it with your CA key:
@@ -48,13 +62,28 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out s
 # Client
 ```
 openssl genrsa -out client.key 2048
+```
+
+```
 openssl req -out client.csr -key client.key -new
+
+Country Name (2 letter code) [XX]:CN
+State or Province Name (full name) []:GD
+Locality Name (eg, city) [Default City]:SZ
+Organization Name (eg, company) [Default Company Ltd]:MQTT CLIENT
+Organizational Unit Name (eg, section) []:MQTT CLIENT
+Common Name (eg, your name or your server's hostname) []:MQTT CLIENT
+Email Address []:liujin.chen@qq.com
+```
+
+
+```
 openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt -days <duration>
 ```
 
 # Client Message
 ```
-mosquitto_pub -h mqtt.example.com -p 8883 --cafile ./ca.crt --cert ./client.crt --key ./client.key -t topic -m "test" -u admin -P 123456
+mosquitto_pub -h mqtt.example.com(此处需要与证书的 Common Name 一致) -p 8883 --cafile ./ca.crt --cert ./client.crt --key ./client.key -t topic -m "test" -u admin -P 123456
 ```
 
 ## 自签名证书脚本
